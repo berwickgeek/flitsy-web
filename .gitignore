@@ -1,0 +1,18 @@
+# Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Build/deploy artefacts
+node_modules/
+dist/
+.aws-sam/

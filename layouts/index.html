@@ -1,0 +1,234 @@
+{{ define "main" }}
+<main class="convo" id="top">
+
+  <div class="turn user">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b><span class="sep">·</span>just now</div>
+      <div class="bubble">
+        <p>What's Flitsy?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b><span class="sep">·</span>with Flitsy connected</div>
+      <div class="bubble">
+        <h2>A CRM that lives <em>inside this chat.</em></h2>
+        <p class="lede">Flitsy plugs your customers, email, calendar, and Slack into me. So instead of bouncing between seven tabs, you just ask. I read, I draft, I chase the follow-ups. You stay in flow.</p>
+        <p style="color:var(--ink-3);font-size:14.5px;margin-top:10px">Self-hosted. Open source. Five minutes to set up.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn user" id="how">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b></div>
+      <div class="bubble">
+        <p>Show me, then.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b></div>
+      <div class="bubble">
+        <p>Sure — here's what's stalled in your pipeline:</p>
+
+        <div class="tool-call">
+          <div class="tool-head">
+            <span class="ic">⌁</span>
+            <span class="name">flitsy.deals.list</span>
+            <span class="args" style="color:var(--ink-3)">{ stalled_gt: 14 }</span>
+            <span class="ms">312 ms</span>
+          </div>
+          <div class="mini-table">
+            <div class="row head">
+              <div>Account</div><div>Owner</div><div class="stage">Stage</div><div>Days</div>
+            </div>
+            <div class="row">
+              <div class="name">Acme Co.</div><div>Sarah Lin</div><div class="stage">Negotiation</div>
+              <div><span class="pill-warn">23</span></div>
+            </div>
+            <div class="row">
+              <div class="name">Northwind</div><div>D. Pao</div><div class="stage">Demo</div>
+              <div><span class="pill-warn">19</span></div>
+            </div>
+            <div class="row">
+              <div class="name">Globex</div><div>Sarah Lin</div><div class="stage">Proposal</div>
+              <div>16</div>
+            </div>
+          </div>
+        </div>
+
+        <p>Want me to draft check-ins for the top two? I'll match the tone from your last email thread with each.</p>
+
+        <div class="deploy-meta">
+          <span class="chip acc">3 tools used</span>
+          <span class="chip warm">2 follow-ups suggested</span>
+          <span class="chip">Reading: gmail · sheets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn user">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b></div>
+      <div class="bubble">
+        <p>How do I set this up?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b></div>
+      <div class="bubble">
+        <h3>Three small things. <em>About five minutes.</em></h3>
+        <ol class="step-list">
+          <li>
+            <span class="n">1</span>
+            <div class="body"><b>Deploy the Railway template.</b> One click and you've got your own Flitsy server. Your data stays on it — we never see it.</div>
+          </li>
+          <li>
+            <span class="n">2</span>
+            <div class="body"><b>Connect your stack.</b> Gmail, Slack, calendar, Sheets, Notion. Each one's a switch, not a project.</div>
+          </li>
+          <li>
+            <span class="n">3</span>
+            <div class="body"><b>Drop your URL into Claude.</b> Paste it into Claude's MCP settings. From here on, <em>this</em> is your CRM.</div>
+          </li>
+        </ol>
+
+        <div class="deploy-block">
+          <a class="btn btn-railway" href="https://railway.app/new/template" target="_blank" rel="noopener">
+            <span class="rmark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="#a89aff"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="#a89aff"/></svg></span>
+            Deploy to Railway
+          </a>
+          <a class="btn btn-secondary" href="{{ site.Params.githubRepo }}" target="_blank" rel="noopener">
+            <svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            View source
+          </a>
+        </div>
+
+        <div class="feat-row">
+          <div class="feat">
+            <div class="label">Hosting</div>
+            <div class="val"><b>~$5/mo</b> on Railway. Or self-host anywhere Docker runs.</div>
+          </div>
+          <div class="feat">
+            <div class="label">License</div>
+            <div class="val"><b>MIT</b> · open source · forks welcome.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn user" id="why">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b></div>
+      <div class="bubble">
+        <p>Why "MCP-first"? What does that mean?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b></div>
+      <div class="bubble">
+        <h3>Because the AI should come to <em>your</em> tools — not the other way around.</h3>
+        <p>MCP is the new shared language between AI clients (Claude, Cursor, ChatGPT) and the apps you already use. Flitsy speaks it natively, which means your CRM doesn't need its own UI — the AI <em>is</em> the UI.</p>
+        <p>You stop bouncing between tabs. You stop copy-pasting context. You stop building reports nobody reads.</p>
+
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em;margin:18px 0 8px">Works with</div>
+        <div class="clients">
+          <span class="c"><span class="dot"></span>Claude Desktop</span>
+          <span class="c"><span class="dot"></span>Claude Code</span>
+          <span class="c"><span class="dot"></span>Cursor</span>
+          <span class="c"><span class="dot"></span>Zed</span>
+          <span class="c beta"><span class="dot"></span>ChatGPT (beta)</span>
+          <span class="c beta"><span class="dot"></span>Any MCP client</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn user" id="faq">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b></div>
+      <div class="bubble">
+        <p>A few more questions before I deploy.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b></div>
+      <div class="bubble">
+        <p>Of course. Click any of these:</p>
+        <div class="qa">
+          <details>
+            <summary>Do I need to be technical?</summary>
+            <p>No. If you can click "Deploy" and paste a URL into Claude's settings, you're done. There's no command line, no install, no config file to edit.</p>
+          </details>
+          <details>
+            <summary>Where does my customer data live?</summary>
+            <p>On your Railway server. Flitsy is self-hosted by design — we never see your data, and we don't have a "cloud" to take down. Want to move providers? Export and redeploy in minutes.</p>
+          </details>
+          <details>
+            <summary>Does it work with ChatGPT, Cursor, Zed?</summary>
+            <p>Anything that speaks MCP. Claude Desktop is the smoothest experience today; ChatGPT support is in beta. Drop your URL in, and the AI takes it from there.</p>
+          </details>
+          <details>
+            <summary>How is this different from a "real" CRM?</summary>
+            <p>It is a real CRM — it just doesn't have screens. The same records, the same relationships, the same reports — except the interface is a conversation, not a dashboard. Less clicks. Less context-switching. More work done.</p>
+          </details>
+          <details>
+            <summary>What does it cost?</summary>
+            <p>The software is free and open source (MIT). Railway hosting starts around $5/month for small teams. You only pay your AI provider for usage, the same way you do today.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="compose-section">
+    <div class="compose-eyebrow">Ready to try it?</div>
+    <h2 class="compose-h">Spin up <em>your</em> Flitsy.</h2>
+
+    <form class="compose" onsubmit="event.preventDefault(); document.getElementById('deploy-cta').click();">
+      <input id="composeInput" type="text" placeholder="Ask Flitsy anything once it's up…" autocomplete="off" />
+      <div class="actions">
+        <a id="deploy-cta" class="btn btn-railway" href="https://railway.app/new/template" target="_blank" rel="noopener">
+          <span class="rmark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="#a89aff"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="#a89aff"/></svg></span>
+          Deploy to Railway
+        </a>
+      </div>
+    </form>
+
+    <div class="compose-row">
+      <a class="btn btn-ghost" href="{{ site.Params.githubRepo }}" target="_blank" rel="noopener">
+        <svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        Star on GitHub
+      </a>
+      <a class="btn btn-ghost" href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>
+    </div>
+  </section>
+
+</main>
+{{ end }}

@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main class="doc-main">
+  <article class="doc-article">
+    <header class="doc-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="doc-subtitle">{{ . }}</p>{{ end }}
+      {{ with .Lastmod }}<p class="doc-meta">Last updated {{ .Format "2 January 2006" }}</p>{{ end }}
+    </header>
+    <div class="doc-body">
+      {{ .Content }}
+    </div>
+  </article>
+</main>
+{{ end }}

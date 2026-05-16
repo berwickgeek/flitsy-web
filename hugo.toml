@@ -1,0 +1,19 @@
+baseURL = 'https://flitsy.app/'
+languageCode = 'en-us'
+title = 'flitsy.app'
+enableEmoji = false
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[params]
+  description = "An MCP-first CRM. Connect Claude or any MCP client and let your AI read, draft, and chase your follow-ups."
+  themeColor = '#fdf8ee'
+  githubRepo = 'https://github.com/berwickgeek/flitsy-crm'
+  contactEmail = 'hello@flitsy.app'
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
