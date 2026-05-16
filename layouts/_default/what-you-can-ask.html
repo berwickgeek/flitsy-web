@@ -1,0 +1,525 @@
+{{ define "main" }}
+<main class="cap-page">
+
+  <header class="cap-hero">
+    <div class="eyebrow">Capabilities</div>
+    <h1>The CRM responds. <em>You don't navigate it.</em></h1>
+    <p class="lede">Once Flitsy is connected, your AI client speaks ~60 tools fluently. You don't learn the tool names — you just ask. Here's the shape of what's possible, grouped, with the kind of thing you'd ask and the kind of answer you'd get back.</p>
+  </header>
+
+  <nav class="cap-toc">
+    <a href="#browse">01 · Browse</a>
+    <a href="#day">02 · Plan your day</a>
+    <a href="#week">03 · Plan your week</a>
+    <a href="#pipeline">04 · Pipeline</a>
+    <a href="#compose">05 · Draft &amp; send</a>
+    <a href="#log">06 · Log it</a>
+    <a href="#tasks">07 · Tasks</a>
+    <a href="#forms">08 · Forms &amp; links</a>
+    <a href="#voice">09 · Your voice</a>
+  </nav>
+
+  <!-- 01 BROWSE -->
+  <section class="cap-section" id="browse">
+    <div class="cap-num">01 / browse &amp; search</div>
+    <h2 class="cap-h">Find what you need <em>by describing it.</em></h2>
+    <p class="cap-lede">No filters, no column pickers, no remembering the exact spelling. Ask in plain English; Flitsy does the lookup and returns a single, readable answer.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Show me everything about Acme.</span>
+      <span class="cap-prompt">Who do I know at Northwind?</span>
+      <span class="cap-prompt">Find my notes about the aircon issue.</span>
+      <span class="cap-prompt">List the orgs I tagged as partners last quarter.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-org">
+        <div class="mo-head">
+          <div>
+            <div class="mo-name">Acme Co.</div>
+            <div class="mo-meta">
+              <span class="mo-pill cool">customer</span>
+              <span class="mo-pill warn">stalled</span>
+              <span class="mo-pill">partner</span>
+            </div>
+          </div>
+          <div class="mo-stats">
+            <div class="mo-stat"><span class="mo-num">3</span> people</div>
+            <div class="mo-stat"><span class="mo-num">2</span> deals</div>
+            <div class="mo-stat"><span class="mo-num">23d</span> quiet</div>
+          </div>
+        </div>
+        <div class="mo-section">
+          <div class="mo-section-h">Recent interactions</div>
+          <div class="mo-item">
+            <div class="mo-item-meta">email · 23 days ago · with Sarah Lin</div>
+            <div class="mo-item-body">Proposal walkthrough. Discussed pricing tiers; Sarah asked for a board-ready one-pager before the next check-in.</div>
+          </div>
+          <div class="mo-item">
+            <div class="mo-item-meta">call · 28 days ago · with David Chen</div>
+            <div class="mo-item-body">Demo of v2. Strong technical interest; SSO and audit logs flagged as must-haves.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>list_organisations</code>
+      <code>get_organisation</code>
+      <code>search_notes</code>
+      <code>list_tagged</code>
+      <code>get_relationships</code>
+    </div>
+  </section>
+
+  <!-- 02 PLAN YOUR DAY -->
+  <section class="cap-section" id="day">
+    <div class="cap-num">02 / plan your day</div>
+    <h2 class="cap-h">Open up. Get a <em>three-thing list.</em></h2>
+    <p class="cap-lede">Instead of a dashboard of metrics, Flitsy returns the small list of things that actually matter today — chosen across your inbox, your follow-ups, and your stalled deals.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">What should I do this morning?</span>
+      <span class="cap-prompt">Who's gone quiet?</span>
+      <span class="cap-prompt">What's awaiting a reply from me?</span>
+      <span class="cap-prompt">Anything overdue?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-actions">
+        <div class="ma-head">Today's three things</div>
+        <ol class="ma-list">
+          <li>
+            <div class="ma-num">1</div>
+            <div class="ma-body">
+              <b>Chase Acme.</b> Sarah's been quiet 23 days after the proposal. <span class="ma-tag">warm lead</span>
+              <div class="ma-hint">→ Draft already in your voice. Hit Send when you're ready.</div>
+            </div>
+          </li>
+          <li>
+            <div class="ma-num">2</div>
+            <div class="ma-body">
+              <b>Reply to Northwind.</b> Asked about pricing on Friday; still waiting. <span class="ma-tag">awaiting reply</span>
+            </div>
+          </li>
+          <li>
+            <div class="ma-num">3</div>
+            <div class="ma-body">
+              <b>Book the Globex demo.</b> They said "next week, Tues or Wed." <span class="ma-tag">scheduling</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>next_best_action</code>
+      <code>get_my_tasks_today</code>
+      <code>get_followups_due</code>
+      <code>get_inbound_awaiting_reply</code>
+      <code>get_stale_engaged</code>
+      <code>weekly_digest</code>
+    </div>
+  </section>
+
+  <!-- 03 PLAN YOUR WEEK -->
+  <section class="cap-section" id="week">
+    <div class="cap-num">03 / plan your week</div>
+    <h2 class="cap-h">Cluster outreach <em>by week,</em> not by day.</h2>
+    <p class="cap-lede">Drag accounts onto a week — this one, next, the one after. Drop on Unscheduled to free a slot. Reads back as a tight horizontal map of who you're touching and when.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Plan my next three weeks.</span>
+      <span class="cap-prompt">Schedule Acme for next Tuesday.</span>
+      <span class="cap-prompt">Push the Northwind call out a week.</span>
+      <span class="cap-prompt">Who haven't I booked into a week yet?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-week">
+        <div class="mw-head">
+          <div>
+            <div class="mw-title">Plan my week</div>
+            <div class="mw-sub">3 weeks ahead · 6 of 17 scheduled</div>
+          </div>
+          <div class="mw-hint">Drag a chip onto a week.<br/>Drop on <b>Unscheduled</b> to clear.</div>
+        </div>
+        <div class="mw-cols">
+          <div class="mw-col mw-col-unsched">
+            <div class="mw-col-head"><span class="mw-day">Unscheduled</span></div>
+            <div class="mw-card">
+              <div class="mw-card-name">Acme Co.</div>
+              <div class="mw-card-meta"><span class="mw-pill warn">stalled</span></div>
+              <div class="mw-card-last">23 days quiet</div>
+            </div>
+            <div class="mw-card">
+              <div class="mw-card-name">Northwind</div>
+              <div class="mw-card-meta"><span class="mw-pill warn">stalled</span></div>
+              <div class="mw-card-last">19 days quiet</div>
+            </div>
+            <div class="mw-card">
+              <div class="mw-card-name">Initech</div>
+              <div class="mw-card-meta"><span class="mw-pill">new</span></div>
+              <div class="mw-card-last">never contacted</div>
+            </div>
+          </div>
+          <div class="mw-col">
+            <div class="mw-col-head"><span class="mw-day">This week</span><span class="mw-date">11 May</span></div>
+            <div class="mw-card">
+              <div class="mw-card-name">Hooli</div>
+              <div class="mw-card-meta"><span class="mw-pill">contacted</span></div>
+              <div class="mw-card-last">Mon 11</div>
+            </div>
+            <div class="mw-card">
+              <div class="mw-card-name">Pied Piper</div>
+              <div class="mw-card-meta"><span class="mw-pill cool">demo</span></div>
+              <div class="mw-card-last">Wed 13</div>
+            </div>
+          </div>
+          <div class="mw-col">
+            <div class="mw-col-head"><span class="mw-day">Next week</span><span class="mw-date">18 May</span></div>
+            <div class="mw-card">
+              <div class="mw-card-name">Vandelay Industries</div>
+              <div class="mw-card-meta"><span class="mw-pill cool">proposal</span></div>
+              <div class="mw-card-last">Tue 19</div>
+            </div>
+          </div>
+          <div class="mw-col">
+            <div class="mw-col-head"><span class="mw-day">Week after</span><span class="mw-date">25 May</span></div>
+            <div class="mw-card">
+              <div class="mw-card-name">Stark Industries</div>
+              <div class="mw-card-meta"><span class="mw-pill cool">demo</span></div>
+              <div class="mw-card-last">Wed 27</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>plan_my_week</code>
+      <code>set_planned_contact</code>
+      <code>schedule_meeting</code>
+      <code>list_upcoming_meetings</code>
+    </div>
+  </section>
+
+  <!-- 04 PIPELINE -->
+  <section class="cap-section" id="pipeline">
+    <div class="cap-num">04 / pipeline &amp; deals</div>
+    <h2 class="cap-h">Ask what's <em>stuck.</em> Move it in one line.</h2>
+    <p class="cap-lede">No kanban board to maintain. Ask for what's stalled, what's closing, who owns what — and edit the same way: "Move Acme to Negotiation," "Close the Hooli deal as won," done.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">What's stalled longer than two weeks?</span>
+      <span class="cap-prompt">Move Acme to Negotiation.</span>
+      <span class="cap-prompt">What deals close this quarter?</span>
+      <span class="cap-prompt">Mark the Hooli deal as won.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="tool-call">
+        <div class="tool-head">
+          <span class="ic">⌁</span>
+          <span class="name">list_deals</span>
+          <span class="args" style="color:var(--ink-3)">{ stalled_gt: 14 }</span>
+          <span class="ms">298 ms</span>
+        </div>
+        <div class="mini-table">
+          <div class="row head">
+            <div>Account</div><div>Owner</div><div class="stage">Stage</div><div>Days</div>
+          </div>
+          <div class="row">
+            <div class="name">Acme Co.</div><div>Sarah Lin</div><div class="stage">Negotiation</div>
+            <div><span class="pill-warn">23</span></div>
+          </div>
+          <div class="row">
+            <div class="name">Northwind</div><div>D. Pao</div><div class="stage">Demo</div>
+            <div><span class="pill-warn">19</span></div>
+          </div>
+          <div class="row">
+            <div class="name">Globex</div><div>Sarah Lin</div><div class="stage">Proposal</div>
+            <div>16</div>
+          </div>
+          <div class="row">
+            <div class="name">Vandelay</div><div>M. Tran</div><div class="stage">Negotiation</div>
+            <div>15</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>list_deals</code>
+      <code>get_deal</code>
+      <code>upsert_deal</code>
+      <code>move_deal_stage</code>
+      <code>close_deal</code>
+      <code>pipeline_summary</code>
+    </div>
+  </section>
+
+  <!-- 05 DRAFT & SEND -->
+  <section class="cap-section" id="compose">
+    <div class="cap-num">05 / draft &amp; send</div>
+    <h2 class="cap-h">Draft <em>in your voice.</em> Send when you're ready.</h2>
+    <p class="cap-lede">Flitsy reads the last thread, your saved tone facts, and the contact's history — then drafts something you can review, tweak, and send without leaving the chat. Tracks opens and clicks if you want.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Draft a check-in to Sarah.</span>
+      <span class="cap-prompt">Reply to Tim's last email but firmer.</span>
+      <span class="cap-prompt">Did Sarah open my last note?</span>
+      <span class="cap-prompt">Send the draft.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-email">
+        <div class="me-head">
+          <div class="me-title">New email</div>
+          <div class="me-sub">Review and edit before sending — nothing leaves until you click Send.</div>
+        </div>
+        <div class="me-row"><div class="me-label">From</div><div class="me-val me-val-from">you@example.com</div></div>
+        <div class="me-row"><div class="me-label">To</div><div class="me-val">Sarah Lin <span class="me-addr">&lt;sarah@acme.co&gt;</span></div></div>
+        <div class="me-row"><div class="me-label">Subject</div><div class="me-val me-val-strong">A quick check-in on the proposal</div></div>
+        <div class="me-row me-row-body">
+          <div class="me-label">Body</div>
+          <div class="me-val me-val-body">
+            <p>Hi Sarah,</p>
+            <p>Hope you're well. Wanted to circle back on the proposal we walked through three weeks back — I know you mentioned a board check-in was the next thing on the list.</p>
+            <p>If a one-pager would help going into that meeting, happy to put one together…</p>
+          </div>
+        </div>
+        <div class="me-foot">
+          <label class="me-check"><input type="checkbox" checked /><span class="me-check-box"></span> Track opens</label>
+          <button class="me-send" type="button">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>draft_message</code>
+      <code>preview_email</code>
+      <code>send_email</code>
+      <code>get_email_opens</code>
+      <code>get_email_send_status</code>
+    </div>
+  </section>
+
+  <!-- 06 LOG IT -->
+  <section class="cap-section" id="log">
+    <div class="cap-num">06 / log what just happened</div>
+    <h2 class="cap-h">Tell Flitsy in <em>one sentence.</em> It does the filing.</h2>
+    <p class="cap-lede">"Just got off a call with Sarah — budget approved, wants a v2 demo Tuesday." Flitsy parses who, what, when, then updates the deal stage, books the follow-up, and adds the new person — all from one line.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Just hung up with Sarah. Budget approved.</span>
+      <span class="cap-prompt">Log a coffee with David yesterday, 30 min, casual.</span>
+      <span class="cap-prompt">What did Sarah and I last discuss?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-log">
+        <div class="ml-status">Logged · just now</div>
+        <div class="ml-head">
+          <div class="ml-type">phone call</div>
+          <div class="ml-date">Today · 3:42 pm · 18 min</div>
+        </div>
+        <div class="ml-with">
+          <span class="ml-label">With</span> Sarah Lin <span class="ml-sub">@ Acme Co.</span>
+        </div>
+        <div class="ml-body">
+          Sarah confirmed budget approved for Q3. Wants a v2 demo with the wider team next Tuesday. Decision-makers named: Sarah (CRO) and David Chen (CTO).
+        </div>
+        <div class="ml-extracts">
+          <div class="ml-extract"><span class="ml-extract-label">→ Follow-up scheduled</span> Send v2 demo invite by Friday</div>
+          <div class="ml-extract"><span class="ml-extract-label">→ Deal stage moved</span> Acme · Demo → Proposal</div>
+          <div class="ml-extract"><span class="ml-extract-label">→ Person added</span> David Chen (CTO)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>log_interaction</code>
+      <code>complete_meeting</code>
+      <code>upsert_person</code>
+      <code>search_notes</code>
+    </div>
+  </section>
+
+  <!-- 07 TASKS -->
+  <section class="cap-section" id="tasks">
+    <div class="cap-num">07 / tasks &amp; follow-ups</div>
+    <h2 class="cap-h">A to-do list <em>that knows what you mean.</em></h2>
+    <p class="cap-lede">"Remind me to chase Acme on Friday." That's enough — Flitsy parses the date, links the task to the right account, and surfaces it on Friday morning's three-thing list.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Remind me to chase Acme on Friday.</span>
+      <span class="cap-prompt">What's overdue?</span>
+      <span class="cap-prompt">Snooze the Hooli follow-up to next month.</span>
+      <span class="cap-prompt">Mark the Northwind reply as done.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-tasks">
+        <div class="mt-head">
+          <span class="mt-title">My tasks</span>
+          <span class="mt-meta">3 today · 2 overdue · 11 this week</span>
+        </div>
+        <ul class="mt-list">
+          <li class="mt-overdue">
+            <span class="mt-check"></span>
+            <div>
+              <div class="mt-task">Send v2 demo invite to Acme</div>
+              <div class="mt-due">overdue · 2 days</div>
+            </div>
+          </li>
+          <li class="mt-overdue">
+            <span class="mt-check"></span>
+            <div>
+              <div class="mt-task">Follow up with Northwind on pricing</div>
+              <div class="mt-due">overdue · 1 day</div>
+            </div>
+          </li>
+          <li>
+            <span class="mt-check"></span>
+            <div>
+              <div class="mt-task">Reply to Tim @ Wonka</div>
+              <div class="mt-due">today</div>
+            </div>
+          </li>
+          <li>
+            <span class="mt-check"></span>
+            <div>
+              <div class="mt-task">Confirm Globex demo time</div>
+              <div class="mt-due">tomorrow</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>create_task</code>
+      <code>complete_task</code>
+      <code>snooze_task</code>
+      <code>list_tasks</code>
+      <code>get_overdue_tasks</code>
+      <code>get_my_tasks_today</code>
+    </div>
+  </section>
+
+  <!-- 08 FORMS & LINKS -->
+  <section class="cap-section" id="forms">
+    <div class="cap-num">08 / forms &amp; tracked links</div>
+    <h2 class="cap-h">Public surfaces. <em>Private capture.</em></h2>
+    <p class="cap-lede">Spin up a contact form or wrap a link with tracking. Submissions land back as new contacts; clicks and opens roll up under the contact they belong to. Ask for the rollup whenever.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Make a contact form for the new product page.</span>
+      <span class="cap-prompt">Who clicked the demo link this week?</span>
+      <span class="cap-prompt">How many opens on Tuesday's newsletter?</span>
+      <span class="cap-prompt">Did anyone submit overnight?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-forms">
+        <div class="mf-head">demo-request · public form</div>
+        <div class="mf-stats">
+          <div class="mf-stat"><span class="mf-num">14</span> submissions this week</div>
+          <div class="mf-stat"><span class="mf-num">62</span> opens · last newsletter</div>
+          <div class="mf-stat"><span class="mf-num">18</span> clicks · demo link</div>
+        </div>
+        <div class="mf-section-h">Recent submissions</div>
+        <div class="mf-item">
+          <div class="mf-row">
+            <b>Jamie Reeves</b> <span class="mf-org">@ Pioneer Group</span>
+            <span class="mf-time">2h ago</span>
+          </div>
+          <div class="mf-msg">"Curious how you handle multi-region data. Have a 30-min slot Thu?"</div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-row">
+            <b>Priya Kumar</b> <span class="mf-org">@ Anvil Co</span>
+            <span class="mf-time">yesterday</span>
+          </div>
+          <div class="mf-msg">"Saw the case study link — could you send the full deck?"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>upsert_form</code>
+      <code>list_form_submissions</code>
+      <code>create_tracked_link</code>
+      <code>get_link_clicks</code>
+      <code>get_email_opens</code>
+    </div>
+  </section>
+
+  <!-- 09 VOICE -->
+  <section class="cap-section" id="voice">
+    <div class="cap-num">09 / teach flitsy your voice</div>
+    <h2 class="cap-h">It learns <em>once</em>. Then it sounds like you.</h2>
+    <p class="cap-lede">Set facts — your signature, your tone, things to never discount before, default meeting length. Every draft and reply pulls from these. No prompt scaffolding required.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">From now on, sign my emails "Cheers, Jay".</span>
+      <span class="cap-prompt">Remember we don't discount before July.</span>
+      <span class="cap-prompt">My default meeting is 25 minutes.</span>
+      <span class="cap-prompt">What facts do you know about me?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-facts">
+        <div class="mfc-head">What Flitsy knows about you</div>
+        <div class="mfc-list">
+          <div class="mfc-fact">
+            <div class="mfc-key">signature</div>
+            <div class="mfc-val">Cheers,<br/>Jay</div>
+          </div>
+          <div class="mfc-fact">
+            <div class="mfc-key">voice</div>
+            <div class="mfc-val">conversational; lightly self-aware; avoids corporate-speak</div>
+          </div>
+          <div class="mfc-fact">
+            <div class="mfc-key">do_not_discount_before</div>
+            <div class="mfc-val">2026-07-01</div>
+          </div>
+          <div class="mfc-fact">
+            <div class="mfc-key">default_meeting_length</div>
+            <div class="mfc-val">25 minutes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>set_fact</code>
+      <code>get_fact</code>
+      <code>list_facts</code>
+      <code>set_my_signature</code>
+      <code>set_attribute</code>
+    </div>
+  </section>
+
+  <section class="cap-cta">
+    <div class="cap-cta-eyebrow">Ready to try it?</div>
+    <h2>Sound good? Wire it up in two minutes.</h2>
+    <p>One MCP URL. Paste into Claude, ChatGPT, Cursor, Zed — anything that speaks MCP.</p>
+    <div class="cap-cta-buttons">
+      <a class="btn btn-railway" href="{{ "/get-started/" | relURL }}">Get started</a>
+      <a class="btn btn-secondary" href="{{ "/pricing/" | relURL }}">See pricing</a>
+    </div>
+  </section>
+
+</main>
+{{ end }}
