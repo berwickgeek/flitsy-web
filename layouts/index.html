@@ -18,7 +18,7 @@
       <div class="bubble">
         <h2>A CRM that lives <em>inside this chat.</em></h2>
         <p class="lede">Flitsy plugs your customers, email, calendar, and Slack into me. So instead of bouncing between seven tabs, you just ask. I read, I draft, I chase the follow-ups. You stay in flow.</p>
-        <p style="color:var(--ink-3);font-size:14.5px;margin-top:10px">Self-hosted. Open source. Five minutes to set up.</p>
+        <p style="color:var(--ink-3);font-size:14.5px;margin-top:10px">Five minutes to set up. Works with <b style="color:var(--ink-2);font-weight:600">Claude</b>, <b style="color:var(--ink-2);font-weight:600">ChatGPT</b>, <b style="color:var(--ink-2);font-weight:600">Cursor</b>, <b style="color:var(--ink-2);font-weight:600">Zed</b> — anything that speaks MCP.</p>
       </div>
     </div>
   </div>
@@ -66,12 +66,160 @@
           </div>
         </div>
 
-        <p>Want me to draft check-ins for the top two? I'll match the tone from your last email thread with each.</p>
+        <p>Want me to draft check-ins for the top two? I'll match the tone from your last thread with each.</p>
 
         <div class="deploy-meta">
           <span class="chip acc">3 tools used</span>
           <span class="chip warm">2 follow-ups suggested</span>
           <span class="chip">Reading: gmail · sheets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn user">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b></div>
+      <div class="bubble">
+        <p>Yeah — draft one for Acme. I'll have a read.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b></div>
+      <div class="bubble">
+        <p>Matched the tone from your last thread with Sarah. Nothing leaves your inbox until you hit Send:</p>
+
+        <div class="mock-email">
+          <div class="me-head">
+            <div class="me-title">New email</div>
+            <div class="me-sub">Review and edit before sending — nothing leaves until you click Send.</div>
+          </div>
+          <div class="me-row"><div class="me-label">From</div><div class="me-val me-val-from">you@example.com</div></div>
+          <div class="me-row"><div class="me-label">To</div><div class="me-val">Sarah Lin <span class="me-addr">&lt;sarah@acme.co&gt;</span></div></div>
+          <div class="me-row"><div class="me-label">Subject</div><div class="me-val me-val-strong">A quick check-in on the proposal</div></div>
+          <div class="me-row me-row-body">
+            <div class="me-label">Body</div>
+            <div class="me-val me-val-body">
+              <p>Hi Sarah,</p>
+              <p>Hope you're well. Wanted to circle back on the proposal we walked through three weeks back — I know you mentioned a board check-in was the next thing on the list.</p>
+              <p>If a one-pager would help going into that meeting, happy to put one together…</p>
+            </div>
+          </div>
+          <div class="me-foot">
+            <label class="me-check"><input type="checkbox" checked /><span class="me-check-box"></span> Track opens</label>
+            <button class="me-send" type="button">Send</button>
+          </div>
+        </div>
+
+        <div class="deploy-meta">
+          <span class="chip acc">draft_message</span>
+          <span class="chip">2,140 ms</span>
+          <span class="chip warm">Reading: last thread · contact</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn user">
+    <div class="av">JM</div>
+    <div>
+      <div class="who"><b>You</b></div>
+      <div class="bubble">
+        <p>Cool. While we're here — what's my week look like?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn ai">
+    <div class="av">✶</div>
+    <div>
+      <div class="who"><b>Claude</b></div>
+      <div class="bubble">
+        <p>Eight booked, eleven still loose. The Unscheduled column is who I'd suggest slotting in next — drag any of them onto a day to commit:</p>
+
+        <div class="mock-week">
+          <div class="mw-head">
+            <div>
+              <div class="mw-title">Plan my week</div>
+              <div class="mw-sub">3 weeks ahead · 6 of 17 scheduled</div>
+            </div>
+            <div class="mw-hint">Drag a chip onto a week.<br/>Drop on <b>Unscheduled</b> to clear.</div>
+          </div>
+          <div class="mw-cols">
+            <div class="mw-col mw-col-unsched">
+              <div class="mw-col-head"><span class="mw-day">Unscheduled</span></div>
+              <div class="mw-card">
+                <div class="mw-card-name">Acme Co.</div>
+                <div class="mw-card-meta"><span class="mw-pill warn">stalled</span></div>
+                <div class="mw-card-last">23 days quiet</div>
+              </div>
+              <div class="mw-card">
+                <div class="mw-card-name">Northwind</div>
+                <div class="mw-card-meta"><span class="mw-pill warn">stalled</span></div>
+                <div class="mw-card-last">19 days quiet</div>
+              </div>
+              <div class="mw-card">
+                <div class="mw-card-name">Globex</div>
+                <div class="mw-card-meta"><span class="mw-pill cool">warming</span></div>
+                <div class="mw-card-last">16 days quiet</div>
+              </div>
+              <div class="mw-card">
+                <div class="mw-card-name">Initech</div>
+                <div class="mw-card-meta"><span class="mw-pill">new</span></div>
+                <div class="mw-card-last">never contacted</div>
+              </div>
+            </div>
+            <div class="mw-col">
+              <div class="mw-col-head"><span class="mw-day">This week</span><span class="mw-date">11 May</span></div>
+              <div class="mw-card">
+                <div class="mw-card-name">Hooli</div>
+                <div class="mw-card-meta"><span class="mw-pill">contacted</span></div>
+                <div class="mw-card-last">Mon 11</div>
+              </div>
+              <div class="mw-card">
+                <div class="mw-card-name">Pied Piper</div>
+                <div class="mw-card-meta"><span class="mw-pill cool">demo</span></div>
+                <div class="mw-card-last">Wed 13</div>
+              </div>
+              <div class="mw-card">
+                <div class="mw-card-name">Soylent</div>
+                <div class="mw-card-meta"><span class="mw-pill">contacted</span></div>
+                <div class="mw-card-last">Fri 15</div>
+              </div>
+            </div>
+            <div class="mw-col">
+              <div class="mw-col-head"><span class="mw-day">Next week</span><span class="mw-date">18 May</span></div>
+              <div class="mw-card">
+                <div class="mw-card-name">Vandelay Industries</div>
+                <div class="mw-card-meta"><span class="mw-pill cool">proposal</span></div>
+                <div class="mw-card-last">Tue 19</div>
+              </div>
+              <div class="mw-card">
+                <div class="mw-card-name">Wonka Inc</div>
+                <div class="mw-card-meta"><span class="mw-pill">contacted</span></div>
+                <div class="mw-card-last">Thu 21</div>
+              </div>
+            </div>
+            <div class="mw-col">
+              <div class="mw-col-head"><span class="mw-day">Week after</span><span class="mw-date">25 May</span></div>
+              <div class="mw-card">
+                <div class="mw-card-name">Stark Industries</div>
+                <div class="mw-card-meta"><span class="mw-pill cool">demo</span></div>
+                <div class="mw-card-last">Wed 27</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="deploy-meta">
+          <span class="chip acc">plan_my_week</span>
+          <span class="chip">419 ms</span>
+          <span class="chip warm">11 follow-ups suggested</span>
         </div>
       </div>
     </div>
@@ -96,38 +244,28 @@
         <ol class="step-list">
           <li>
             <span class="n">1</span>
-            <div class="body"><b>Deploy the Railway template.</b> One click and you've got your own Flitsy server. Your data stays on it — we never see it.</div>
+            <div class="body">
+              <b>Copy the Flitsy MCP URL.</b> One URL, same for everyone:
+              <div class="url-copy">
+                <code class="url">https://my.flitsy.app/mcp</code>
+                <button class="copy-btn" type="button" data-copy="https://my.flitsy.app/mcp" aria-label="Copy MCP URL">Copy</button>
+              </div>
+            </div>
           </li>
           <li>
             <span class="n">2</span>
-            <div class="body"><b>Connect your stack.</b> Gmail, Slack, calendar, Sheets, Notion. Each one's a switch, not a project.</div>
+            <div class="body"><b>Paste it into your AI client.</b> Claude, Cursor, Zed — anything that speaks MCP. Your account is created the moment you connect.</div>
           </li>
           <li>
             <span class="n">3</span>
-            <div class="body"><b>Drop your URL into Claude.</b> Paste it into Claude's MCP settings. From here on, <em>this</em> is your CRM.</div>
+            <div class="body"><b>Connect your stack.</b> Gmail, Slack, calendar, Sheets, Notion. Each one's a switch, not a project.</div>
           </li>
         </ol>
 
         <div class="deploy-block">
-          <a class="btn btn-railway" href="https://railway.app/new/template" target="_blank" rel="noopener">
-            <span class="rmark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="#a89aff"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="#a89aff"/></svg></span>
-            Deploy to Railway
+          <a class="btn btn-railway" href="{{ "/get-started/" | relURL }}">
+            Per-client setup guide
           </a>
-          <a class="btn btn-secondary" href="{{ site.Params.githubRepo }}" target="_blank" rel="noopener">
-            <svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-            View source
-          </a>
-        </div>
-
-        <div class="feat-row">
-          <div class="feat">
-            <div class="label">Hosting</div>
-            <div class="val"><b>~$5/mo</b> on Railway. Or self-host anywhere Docker runs.</div>
-          </div>
-          <div class="feat">
-            <div class="label">License</div>
-            <div class="val"><b>MIT</b> · open source · forks welcome.</div>
-          </div>
         </div>
       </div>
     </div>
@@ -170,7 +308,7 @@
     <div>
       <div class="who"><b>You</b></div>
       <div class="bubble">
-        <p>A few more questions before I deploy.</p>
+        <p>A few more questions before I get started.</p>
       </div>
     </div>
   </div>
@@ -184,11 +322,11 @@
         <div class="qa">
           <details>
             <summary>Do I need to be technical?</summary>
-            <p>No. If you can click "Deploy" and paste a URL into Claude's settings, you're done. There's no command line, no install, no config file to edit.</p>
+            <p>No. If you can paste a URL into your AI client's settings, you're done. There's no command line, no install, no config file to edit.</p>
           </details>
           <details>
             <summary>Where does my customer data live?</summary>
-            <p>On your Railway server. Flitsy is self-hosted by design — we never see your data, and we don't have a "cloud" to take down. Want to move providers? Export and redeploy in minutes.</p>
+            <p>In a tenant-isolated Postgres database we run on Railway (Singapore). Each tenant's data is fully separated from every other tenant's, encrypted at rest, and exportable any time. The full story is on our <a href="{{ "/privacy/" | relURL }}">privacy page</a>.</p>
           </details>
           <details>
             <summary>Does it work with ChatGPT, Cursor, Zed?</summary>
@@ -200,7 +338,7 @@
           </details>
           <details>
             <summary>What does it cost?</summary>
-            <p>The software is free and open source (MIT). Railway hosting starts around $5/month for small teams. You only pay your AI provider for usage, the same way you do today.</p>
+            <p>Free plan with up to 50 records, or <b>$19 per user per month</b> for Pro — unlimited records, all integrations, smart views, and Flitsy email sending. <a href="{{ "/pricing/" | relURL }}">Full pricing here</a>. You'll only pay your AI provider for usage on top of Flitsy, same way you do today.</p>
           </details>
         </div>
       </div>
@@ -209,23 +347,18 @@
 
   <section class="compose-section">
     <div class="compose-eyebrow">Ready to try it?</div>
-    <h2 class="compose-h">Spin up <em>your</em> Flitsy.</h2>
+    <h2 class="compose-h">Get started with <em>Flitsy.</em></h2>
 
     <form class="compose" onsubmit="event.preventDefault(); document.getElementById('deploy-cta').click();">
-      <input id="composeInput" type="text" placeholder="Ask Flitsy anything once it's up…" autocomplete="off" />
+      <input id="composeInput" type="text" placeholder="Ask Flitsy anything once you're set up…" autocomplete="off" />
       <div class="actions">
-        <a id="deploy-cta" class="btn btn-railway" href="https://railway.app/new/template" target="_blank" rel="noopener">
-          <span class="rmark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" fill="#a89aff"/><rect x="14" y="3" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="3" y="14" width="7" height="7" rx="1.5" fill="#fff" opacity=".5"/><rect x="14" y="14" width="7" height="7" rx="1.5" fill="#a89aff"/></svg></span>
-          Deploy to Railway
+        <a id="deploy-cta" class="btn btn-railway" href="{{ "/get-started/" | relURL }}">
+          Get started
         </a>
       </div>
     </form>
 
     <div class="compose-row">
-      <a class="btn btn-ghost" href="{{ site.Params.githubRepo }}" target="_blank" rel="noopener">
-        <svg class="gh-mark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        Star on GitHub
-      </a>
       <a class="btn btn-ghost" href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>
     </div>
   </section>
