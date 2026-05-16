@@ -1,0 +1,233 @@
+{{ define "main" }}
+<main class="pricing-page">
+
+  <header class="pricing-hero">
+    <div class="eyebrow">Pricing</div>
+    <h1>Free, until <em>you outgrow it</em>.<br/>Then a flat <em>$19</em>.</h1>
+    <p class="lede">One free plan with real teeth. One paid plan that turns on the rest. No tiers, no sales call, no "starting at" footnotes — and Free works forever under the caps.</p>
+    <div class="hero-anchors">
+      <a href="#plans" class="btn btn-secondary btn-sm">See the plans</a>
+      <a href="#calc" class="btn btn-ghost btn-sm">Calculate a team</a>
+      <a href="#gates" class="btn btn-ghost btn-sm">What flips you to Pro</a>
+    </div>
+  </header>
+
+  <section class="pricing-cards" id="plans">
+
+    <article class="pcard">
+      <div class="pcard-head">
+        <h2 class="pname">Free</h2>
+        <div class="ptag">Forever, under the caps. A real product — not a trial.</div>
+      </div>
+      <div class="pprice">
+        <span class="num">$0</span>
+        <span class="suffix">USD<br/>/ month</span>
+      </div>
+      <div class="ppair">
+        <div class="pp-key">Includes</div>
+        <div class="pp-val">2 users · 6,000 records · core tools</div>
+      </div>
+      <ul class="pfeat">
+        <li><b>2 users</b> (you + 1 invited)</li>
+        <li><b>6,000 records</b> across organisations + people</li>
+        <li>Notes, tasks, follow-ups, tags, deals</li>
+        <li>Smart views — next-best-action, weekly digest, plan-my-week, follow-ups due</li>
+        <li>Keyword note search (Postgres FTS)</li>
+        <li>Connect any AI client that speaks MCP</li>
+        <li>Export your data any time</li>
+      </ul>
+      <div class="plimit">
+        <span class="pl-icon">!</span>
+        <div>
+          <b>What's <i>not</i> on Free:</b> sending email, public forms, link tracking, contact enrichment, inbox sync, and semantic note search.
+        </div>
+      </div>
+      <a class="btn btn-secondary btn-block" href="{{ "/get-started/" | relURL }}">Start free →</a>
+    </article>
+
+    <article class="pcard pcard-pro">
+      <div class="pbadge">For real teams</div>
+      <div class="pcard-head">
+        <h2 class="pname">Pro</h2>
+        <div class="ptag">When you start sending, syncing, or scaling.</div>
+      </div>
+      <div class="pprice">
+        <span class="num">$19</span>
+        <span class="suffix">USD / month base<br/>includes 2 seats</span>
+      </div>
+      <div class="ppair">
+        <div class="pp-key">Extra seats</div>
+        <div class="pp-val">+ $19 / month each, from seat #3</div>
+      </div>
+      <ul class="pfeat">
+        <li><b>Unlimited records</b></li>
+        <li><b>Send email</b> through Flitsy — opens, clicks, attribution</li>
+        <li><b>Public forms</b> and tracked links</li>
+        <li><b>Email forwarding inbox</b> — forward anything in</li>
+        <li><b>Inbox sync</b> + contact enrichment</li>
+        <li><b>Semantic note search</b> — "the convo about the broken aircon" actually finds it</li>
+        <li>Everything in Free, of course</li>
+      </ul>
+      <div class="plimit plimit-pro">
+        <span class="pl-icon">✓</span>
+        <div>
+          <b>Email support</b>, 1-business-day response. Cancel any time — downgraded data stays read-only, never deleted.
+        </div>
+      </div>
+      <a class="btn btn-railway btn-block" href="https://my.flitsy.app/upgrade">Upgrade in app →</a>
+    </article>
+
+  </section>
+
+  <section class="calc-section" id="calc">
+    <div class="calc-eyebrow">Team math</div>
+    <h2 class="calc-h">How much for <em>your</em> team?</h2>
+    <p class="calc-sub">Pro is $19/mo base for 2 seats, then +$19 per seat from #3. Drag the slider.</p>
+
+    <div class="calc-card">
+      <div class="calc-control">
+        <button class="calc-step" data-step="-1" aria-label="Fewer seats" type="button">−</button>
+        <div class="calc-seat-wrap">
+          <input type="range" min="1" max="20" value="3" class="calc-range" id="calcRange" aria-label="Number of seats" />
+          <div class="calc-seat-readout">
+            <span id="calcSeats">3</span>
+            <span class="calc-seat-label">seats</span>
+          </div>
+        </div>
+        <button class="calc-step" data-step="1" aria-label="More seats" type="button">+</button>
+      </div>
+      <div class="calc-result">
+        <div class="calc-result-num"><span id="calcMonthly">$38</span></div>
+        <div class="calc-result-suffix">USD / month</div>
+        <div class="calc-breakdown" id="calcBreakdown">$19 base (covers 2) + $19 × 1 extra seat</div>
+      </div>
+    </div>
+    <p class="calc-note">Monthly only at launch — annual billing isn't a thing yet. <a href="mailto:{{ site.Params.contactEmail }}">Drop us a line</a> if you'd like an invoice.</p>
+  </section>
+
+  <section class="gates-section" id="gates">
+    <div class="gates-eyebrow">Three triggers</div>
+    <h2 class="gates-h">Free flips to Pro when <em>any one</em> of these happens.</h2>
+    <p class="gates-sub">Honest list. No hidden meters, no "talk to sales".</p>
+
+    <div class="gates-grid">
+      <article class="gate-card">
+        <div class="gate-num">01 / users</div>
+        <div class="gate-title">You invite a 3rd user.</div>
+        <div class="gate-body">Free includes you + 1 collaborator. The moment you click <b>Invite</b> on seat #3, you'll see the upgrade screen.</div>
+      </article>
+      <article class="gate-card">
+        <div class="gate-num">02 / records</div>
+        <div class="gate-title">You cross 6,001 records.</div>
+        <div class="gate-body">Organisations + people combined, per account. Reads keep working at any size — only the next <code>upsert</code> pauses to ask you to upgrade.</div>
+      </article>
+      <article class="gate-card">
+        <div class="gate-num">03 / external tools</div>
+        <div class="gate-title">You touch the outside world.</div>
+        <div class="gate-body">Sending email or SMS, public forms, link/open tracking, inbox sync, or contact enrichment — anything that reaches past your dataset.</div>
+      </article>
+    </div>
+
+    <div class="soft-gate">
+      <div class="sg-icon">✶</div>
+      <div class="sg-body">
+        <b>There's a softer fourth one:</b> note search. On Free, <code>search_notes</code> falls back to keyword (Postgres FTS) — still useful, but it won't find <i>"the conversation about the broken aircon"</i> unless your note literally says "broken aircon." Pro turns on embeddings and the hybrid ranker. No refusal — just a quieter capability difference.
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-table-section">
+    <h2 class="ptable-h">The whole thing, line by line.</h2>
+
+    <div class="ptable-wrap">
+      <table class="ptable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Free</th>
+            <th>Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="phead"><td colspan="3">Workspace</td></tr>
+          <tr><td>Organisations &amp; people (combined)</td><td>Up to 6,000</td><td>Unlimited</td></tr>
+          <tr><td>Users / seats</td><td>2</td><td>2 included · +$19 each from #3</td></tr>
+          <tr><td>Notes, tasks, follow-ups, tags</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Deals &amp; pipeline</td><td>Yes</td><td>Yes</td></tr>
+
+          <tr class="phead"><td colspan="3">AI &amp; search</td></tr>
+          <tr><td>Connect any MCP client (Claude, Cursor, ChatGPT…)</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Core tools — list, get, upsert, log, draft</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Smart views — <code>next_best_action</code>, <code>weekly_digest</code>, <code>plan_my_week</code></td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Note search</td><td>Keyword (FTS)</td><td>Semantic + keyword (hybrid)</td></tr>
+
+          <tr class="phead"><td colspan="3">External-facing tools</td></tr>
+          <tr><td>Send email through Flitsy</td><td><span class="pdash">—</span></td><td>Yes — opens, clicks, attribution</td></tr>
+          <tr><td>Public forms</td><td><span class="pdash">—</span></td><td>Yes</td></tr>
+          <tr><td>Tracked links</td><td><span class="pdash">—</span></td><td>Yes</td></tr>
+          <tr><td>Email forwarding inbox</td><td><span class="pdash">—</span></td><td>Yes</td></tr>
+          <tr><td>Inbox sync (read incoming threads)</td><td><span class="pdash">—</span></td><td>Yes</td></tr>
+          <tr><td>Contact enrichment</td><td><span class="pdash">—</span></td><td>Yes</td></tr>
+
+          <tr class="phead"><td colspan="3">Data &amp; support</td></tr>
+          <tr><td>Export</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Downgrade behaviour</td><td colspan="2" class="pspan">Records over the caps stay read-only — never deleted.</td></tr>
+          <tr><td>Support</td><td>Community</td><td>Email, 1-business-day</td></tr>
+          <tr><td>Billing</td><td>—</td><td>USD · monthly</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pricing-faq">
+    <h2>A few honest answers.</h2>
+    <div class="qa">
+      <details>
+        <summary>What counts as a "user"?</summary>
+        <p>A human with a login. AI clients (Claude, Cursor, ChatGPT) connecting on behalf of that human are part of their seat — the seat travels with the person, not the device.</p>
+      </details>
+      <details>
+        <summary>How long is Free actually free?</summary>
+        <p>Forever, under the caps. There's no countdown. If 2 users and 6,000 records is your whole world, you'll never see a charge.</p>
+      </details>
+      <details>
+        <summary>What happens if I hit the record cap on Free?</summary>
+        <p>Reads keep working — your data stays fully accessible. The next <code>upsert</code> refuses with an upgrade link. Nothing's deleted, nothing's hidden.</p>
+      </details>
+      <details>
+        <summary>What happens if I downgrade after using Pro?</summary>
+        <p>Records over the cap go read-only (visible, not editable) until you prune them or re-upgrade. No silent data loss, no ransom.</p>
+      </details>
+      <details>
+        <summary>Can I add a 3rd seat without upgrading?</summary>
+        <p>No — adding a 3rd seat <i>is</i> the upgrade trigger.</p>
+      </details>
+      <details>
+        <summary>Does my search just get worse on Free?</summary>
+        <p>Yes, honestly. It falls back to Postgres full-text search — still useful for exact-phrase queries, just not magic. Pro turns on embeddings + semantic ranking.</p>
+      </details>
+      <details>
+        <summary>Annual billing? Discount for paying yearly?</summary>
+        <p>Monthly only at launch. Simpler for us, fewer surprises for you. If the demand is there, we'll revisit.</p>
+      </details>
+      <details>
+        <summary>What currency?</summary>
+        <p>Billing is in <b>USD</b>. We're based in Australia and Stripe settles in AUD, but the customer-facing price is USD everywhere.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="pricing-cta-section">
+    <div class="cta-bubble">
+      <div class="cta-eyebrow">Ready when you are</div>
+      <h2 class="cta-h">Start <em>free</em>. Upgrade when you outgrow it.</h2>
+      <div class="cta-buttons">
+        <a class="btn btn-railway" href="{{ "/get-started/" | relURL }}">Start free</a>
+        <a class="btn btn-secondary" href="https://my.flitsy.app/upgrade">Go straight to Pro</a>
+      </div>
+      <p class="cta-foot">Questions? <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a></p>
+    </div>
+  </section>
+
+</main>
+{{ end }}
