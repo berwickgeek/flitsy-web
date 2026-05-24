@@ -8,7 +8,15 @@
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}" />
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}" />
+<meta property="og:image" content="{{ "brand/og-image.png" | absURL }}" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="{{ site.Params.themeColor }}" />
+
+<link rel="icon" type="image/svg+xml" href="{{ "brand/favicon.svg" | relURL }}" />
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "brand/favicon-32.png" | relURL }}" />
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "brand/favicon-16.png" | relURL }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "brand/apple-touch-icon-180.png" | relURL }}" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +27,9 @@
 
 <div class="nav-wrap" id="navwrap">
   <nav class="top">
-    <a class="logo" href="{{ "/" | relURL }}">
-      <span class="logo-mark">f</span>
-      <span>flitsy<span class="dot">.</span>app</span>
+    <a class="logo" href="{{ "/" | relURL }}" aria-label="flitsy.app — home">
+      <img class="logo-mark" src="{{ "brand/flitsy-mark-animated.svg" | relURL }}" alt="" width="36" height="28" />
+      <span class="logo-text">flitsy<span class="dot">.</span>app</span>
     </a>
     <div class="nav-links">
       <a href="{{ "/" | relURL }}#how">How it works</a>
@@ -44,6 +52,7 @@
     <a href="{{ "/what-you-can-ask/" | relURL }}">Capabilities</a>
     <a href="{{ "/pricing/" | relURL }}">Pricing</a>
     <a href="{{ "/" | relURL }}#faq">FAQ</a>
+    <a href="https://jay.tools/products/webhook-notify/">macOS app</a>
     <a href="{{ "/privacy/" | relURL }}">Privacy</a>
     <a href="{{ "/terms/" | relURL }}">Terms</a>
   </div>
