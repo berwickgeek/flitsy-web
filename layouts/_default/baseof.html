@@ -39,7 +39,7 @@
     // Only fires if the Reddit pixel was loaded (i.e. the visitor accepted the cookie banner).
     document.querySelectorAll('a[href*="claude.ai/customize/connectors"]').forEach(function (a) {
       a.addEventListener("click", function () {
-        if (window.rdt) window.rdt("track", "SignUp");
+        if (window.rdt) window.rdt("track", "SignUp", { conversionId: window.flitsyEventId() });
       });
     });
   });
@@ -47,11 +47,18 @@
 
 <!-- Reddit Pixel — loaded only after the visitor accepts the cookie banner (see consent banner). -->
 <script>
-  // The official Reddit Pixel snippet, unchanged, wrapped so it runs on consent rather than on load.
+  // Unique ID per event so Reddit can deduplicate repeated fires (and match
+  // a pixel event to any future server-side event sharing the same ID).
+  window.flitsyEventId = function () {
+    try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+    return "fl-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
+  };
+  // The official Reddit Pixel snippet, wrapped so it runs on consent rather than on load.
+  // Only the track call carries an added conversionId (per Reddit's deduplication guide).
   window.__loadRedditPixel = function () {
     if (window.rdt) return; // already loaded
     // === Reddit Pixel (DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER) ===
-    !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j2765jplijir",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j2765jplijir');rdt('track', 'PageVisit');
+    !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j2765jplijir",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j2765jplijir');rdt('track', 'PageVisit', { conversionId: window.flitsyEventId() });
     // === End Reddit Pixel ===
   };
   // If the visitor already consented on a previous visit, load it straight away.
