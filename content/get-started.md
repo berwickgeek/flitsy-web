@@ -14,10 +14,15 @@ Below is how to wire it into the most common clients.
 
 ## Claude
 
-1. Open <https://claude.ai/customize/connectors> (or go to **Settings → Connectors** in Claude).
-2. Click **Add custom connector**.
-3. Paste `https://my.flitsy.app/mcp`.
-4. Authorize when prompted — your account is created on first connect.
+<a class="btn btn-railway" href="https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=Flitsy&amp;connectorUrl=https%3A%2F%2Fmy.flitsy.app%2Fmcp">Add Flitsy to Claude</a>
+
+One click opens claude.ai with the name and URL already filled in. Claude will
+note the connector came from a link and ask you to verify it — that's expected;
+the details are Flitsy's own (`https://my.flitsy.app/mcp`). Hit **Add**,
+authorize when prompted, and your account is created on first connect.
+
+Prefer to do it by hand? Open <https://claude.ai/customize/connectors>, click
+**Add custom connector**, and paste `https://my.flitsy.app/mcp`.
 
 That's it. Ask Claude anything about your customers — pipeline,
 follow-ups, who's gone quiet — and it'll route through Flitsy.
