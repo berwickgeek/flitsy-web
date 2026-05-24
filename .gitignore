@@ -16,3 +16,6 @@ Thumbs.db
 node_modules/
 dist/
 .aws-sam/
+
+# Reddit ad working-copy assets (served versions live in static/video/)
+tools/reddit-ads/assets/

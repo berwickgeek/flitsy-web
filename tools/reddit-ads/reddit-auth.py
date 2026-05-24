@@ -32,7 +32,7 @@ PORT = 8080
 REDIRECT_URI = f"http://localhost:{PORT}/callback"
 # Full campaign management: read reporting + create/edit campaigns + conversions.
 # `identity` lets us confirm which Reddit account authorized.
-SCOPES = "identity adsread adsedit adsconversions"
+SCOPES = "identity adsread adsedit adsconversions read"
 AUTHORIZE_URL = "https://www.reddit.com/api/v1/authorize"
 TOKEN_URL = "https://www.reddit.com/api/v1/access_token"
 USER_AGENT = "flitsy-ads-cli/1.0 (by /u/flitsy_app)"
