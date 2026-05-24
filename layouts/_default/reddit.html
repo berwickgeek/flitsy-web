@@ -21,10 +21,10 @@
        Drop self-hosted clips into static/video/ as <slug>.mp4 (+ optional <slug>.webm).
        Posters are branded SVG placeholders; replace with a frame grab (<slug>.jpg) later. -->
   {{- $beats := slice
+      (dict "slug" "plan-week"   "q" "Plan my week — who do I reach out to, and when?"       "what" "A draggable calendar, live in chat")
       (dict "slug" "connections" "q" "Who could give me a warm intro to Quill Publishing?"   "what" "The warmest path through your network")
       (dict "slug" "today"       "q" "What should I focus on in my CRM today?"               "what" "Morning triage — reply, chase, at-risk")
-      (dict "slug" "pipeline"    "q" "Where's the money in my pipeline, and what's at risk?" "what" "A weighted pipeline read — no dashboard")
-      (dict "slug" "plan-week"   "q" "Plan my week — who do I reach out to, and when?"       "what" "A draggable calendar, live in chat") }}
+      (dict "slug" "pipeline"    "q" "Where's the money in my pipeline, and what's at risk?" "what" "A weighted pipeline read — no dashboard") }}
   <section class="cap-section" id="how-it-works">
     <div class="cap-num">what it looks like</div>
     <h2 class="cap-h">You ask. Claude <em>queries Flitsy directly.</em></h2>
