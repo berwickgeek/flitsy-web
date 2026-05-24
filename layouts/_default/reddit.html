@@ -1,0 +1,132 @@
+{{ define "main" }}
+{{- $connect := "https://claude.ai/customize/connectors?modal=add-custom-connector&amp;connectorName=Flitsy&amp;connectorUrl=https%3A%2F%2Fmy.flitsy.app%2Fmcp" }}
+<main class="cap-page reddit-lp">
+
+  <!-- HERO — headline message-matches the Reddit ad (Angle A). Single CTA above the fold. -->
+  <header class="cap-hero">
+    <div class="eyebrow">For Claude users</div>
+    <h1>Stop pasting CRM data <em>into Claude.</em></h1>
+    <p class="lede">You got tired of pasting contact lists into Claude every time you wanted help drafting a follow-up. So did we. Flitsy is a CRM with an MCP server baked in — Claude (or Cursor, or any MCP client) just connects and queries it directly. Add a contact, log a call, chase the pipeline, all in chat.</p>
+
+    <p class="lp-differentiator">Here's the part no other CRM does: <em>there is no UI.</em> No dashboard, no app, nothing to log into. The only interface is whatever surfaces in your chat. That's not a missing feature — it <em>is</em> the product.</p>
+
+    <div class="cap-cta-buttons">
+      <a class="btn btn-railway" href="{{ $connect | safeHTMLAttr }}">Add Flitsy to Claude</a>
+      <a class="btn btn-secondary" href="#how-it-works">See it work first</a>
+    </div>
+    <p style="color:var(--ink-3);font-size:13.5px;margin:14px 0 0">Free to start · no credit card · connect in about a minute. Not built for enterprise sales orgs — built for solo operators and small teams who live in chat.</p>
+  </header>
+
+  <!-- SEE IT WORK — four-beat clip gallery, mirroring flitsy-crm/demo-video-scripts.md.
+       Drop self-hosted clips into static/video/ as <slug>.mp4 (+ optional <slug>.webm).
+       Posters are branded SVG placeholders; replace with a frame grab (<slug>.jpg) later. -->
+  {{- $beats := slice
+      (dict "slug" "connections" "q" "Who could give me a warm intro to Quill Publishing?"   "what" "The warmest path through your network")
+      (dict "slug" "today"       "q" "What should I focus on in my CRM today?"               "what" "Morning triage — reply, chase, at-risk")
+      (dict "slug" "pipeline"    "q" "Where's the money in my pipeline, and what's at risk?" "what" "A weighted pipeline read — no dashboard")
+      (dict "slug" "plan-week"   "q" "Plan my week — who do I reach out to, and when?"       "what" "A draggable calendar, live in chat") }}
+  <section class="cap-section" id="how-it-works">
+    <div class="cap-num">what it looks like</div>
+    <h2 class="cap-h">You ask. Claude <em>queries Flitsy directly.</em></h2>
+    <p class="cap-lede">No exports, no screenshots, no pasting. You ask in plain English; Claude calls Flitsy's MCP tools and answers — drafts, pipeline, your week — right in the chat.</p>
+
+    <div class="beats">
+      {{- range $beats }}
+      <div class="beat">
+        <div class="beat-prompt">
+          <span class="beat-q">{{ .q }}</span>
+          <span class="beat-what">{{ .what }}</span>
+        </div>
+        <div class="beat-clip">
+          <video class="beat-video" autoplay muted loop playsinline preload="metadata"
+                 poster="{{ (printf "video/%s.svg" .slug) | relURL }}">
+            <source src="{{ (printf "video/%s.mp4" .slug) | relURL }}" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      {{- end }}
+    </div>
+  </section>
+
+  <!-- 60-SECOND SETUP -->
+  <section class="cap-section" id="setup">
+    <div class="cap-num">setup</div>
+    <h2 class="cap-h">One URL. <em>About a minute.</em></h2>
+    <p class="cap-lede">There's a single Flitsy MCP URL — the same one for everyone. Paste it into your AI client and your account is created the moment you connect.</p>
+
+    <ol class="step-list">
+      <li>
+        <span class="n">1</span>
+        <div class="body">
+          <b>Copy the Flitsy MCP URL.</b>
+          <div class="url-copy">
+            <code class="url">https://my.flitsy.app/mcp</code>
+            <button class="copy-btn" type="button" data-copy="https://my.flitsy.app/mcp" aria-label="Copy MCP URL">Copy</button>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <div class="body"><b>Paste it into Claude</b> (or Cursor, Zed, ChatGPT beta). Your account is created on first connect — no signup form.</div>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <div class="body"><b>Ask it something.</b> "Who've I gone quiet on?" Claude routes through Flitsy and answers.</div>
+      </li>
+    </ol>
+
+    <div class="cap-cta-buttons" style="margin-top:22px">
+      <a class="btn btn-railway" href="{{ $connect | safeHTMLAttr }}">Add Flitsy to Claude</a>
+      <a class="btn btn-secondary" href="{{ "/get-started/" | relURL }}">Per-client setup guide</a>
+    </div>
+  </section>
+
+  <!-- FAQ — the four questions Reddit will ask in the comments anyway (playbook §4). Answered straight. -->
+  <section class="cap-section" id="faq">
+    <div class="cap-num">the questions you're about to ask</div>
+    <h2 class="cap-h">Straight answers.</h2>
+    <div class="qa">
+      <details>
+        <summary>So there's no dashboard? No app?</summary>
+        <p>Correct — and on purpose. Every other CRM is a pile of screens you navigate; Flitsy has none. The only interface is your AI client, so the CRM shows up where you're already working instead of being another tab you forget to open. If running a CRM through chat sounds wrong, it probably isn't for you yet. If it sounds like a relief, that's exactly who it's built for.</p>
+      </details>
+      <details>
+        <summary>Is it open source?</summary>
+        <p>Not today — Flitsy is a hosted service, not a self-hosted package. What you do get: your data is tenant-isolated and exportable any time, so you're never locked in. If self-hosting matters to you, say so in the comments — it's on the table.</p>
+      </details>
+      <details>
+        <summary>Is my data leaving my machine?</summary>
+        <p>Honest answer: yes, the same way any cloud CRM works. Your records live in a tenant-isolated Postgres database we run (Singapore), encrypted at rest. Claude reads and writes them through the MCP connection. We don't train on your data and we don't sell it. The full story is on our <a href="{{ "/privacy/" | relURL }}">privacy page</a>.</p>
+      </details>
+      <details>
+        <summary>What MCP clients work?</summary>
+        <p>Anything that speaks MCP — there's no Flitsy-specific plumbing, the URL is the whole integration.</p>
+        <div class="clients">
+          <span class="c"><span class="dot"></span>Claude Desktop</span>
+          <span class="c"><span class="dot"></span>Claude Code</span>
+          <span class="c"><span class="dot"></span>Cursor</span>
+          <span class="c"><span class="dot"></span>Zed</span>
+          <span class="c beta"><span class="dot"></span>ChatGPT (beta)</span>
+          <span class="c beta"><span class="dot"></span>Any MCP client</span>
+        </div>
+      </details>
+      <details>
+        <summary>What's the pricing?</summary>
+        <p>Free forever for 2 users and up to 6,000 records — no trial clock. Pro is <b>$19/month</b> (USD) for 2 seats with unlimited records, all integrations, smart views, and Flitsy email sending; extra seats are +$19/month each from the third. <a href="{{ "/pricing/" | relURL }}">Full pricing here</a>. You pay your own AI provider for usage on top, same as you do now.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cap-cta">
+    <div class="cap-cta-eyebrow">Free to start</div>
+    <h2>Point Claude at your CRM.</h2>
+    <p>One MCP URL. Account created on first connect. No credit card.</p>
+    <div class="cap-cta-buttons">
+      <a class="btn btn-railway" href="{{ $connect | safeHTMLAttr }}">Add Flitsy to Claude</a>
+      <a class="btn btn-secondary" href="{{ "/what-you-can-ask/" | relURL }}">See everything it can do</a>
+    </div>
+  </section>
+
+</main>
+{{ end }}
