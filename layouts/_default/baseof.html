@@ -6,6 +6,7 @@
 {{- $title := cond .IsHome (printf "%s — A CRM that lives inside your AI" site.Title) (printf "%s — %s" .Title site.Title) }}
 <title>{{ $title }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}" />
+{{- if .Params.noindex }}<meta name="robots" content="noindex,nofollow" />{{ end }}
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}" />
 <meta property="og:image" content="{{ "brand/og-image.png" | absURL }}" />
