@@ -4,7 +4,7 @@
   <header class="cap-hero">
     <div class="eyebrow">Capabilities</div>
     <h1>The CRM responds. <em>You don't navigate it.</em></h1>
-    <p class="lede">Once Flitsy is connected, your AI client speaks ~60 tools fluently. You don't learn the tool names — you just ask. Here's the shape of what's possible, grouped, with the kind of thing you'd ask and the kind of answer you'd get back.</p>
+    <p class="lede">Once Flitsy is connected, your AI client speaks more than 100 tools fluently. You don't learn the tool names — you just ask. Here's the shape of what's possible, grouped, with the kind of thing you'd ask and the kind of answer you'd get back.</p>
   </header>
 
   <nav class="cap-toc">
@@ -15,8 +15,15 @@
     <a href="#compose">05 · Draft &amp; send</a>
     <a href="#log">06 · Log it</a>
     <a href="#tasks">07 · Tasks</a>
-    <a href="#forms">08 · Forms &amp; links</a>
-    <a href="#voice">09 · Your voice</a>
+    <a href="#people">08 · Relationships</a>
+    <a href="#tags">09 · Tags &amp; fields</a>
+    <a href="#tidy">10 · Tidy up</a>
+    <a href="#events">11 · Events</a>
+    <a href="#forms">12 · Forms &amp; links</a>
+    <a href="#files">13 · Files</a>
+    <a href="#automations">14 · Automations</a>
+    <a href="#team">15 · Your team</a>
+    <a href="#voice">16 · Your voice</a>
   </nav>
 
   <!-- 01 BROWSE -->
@@ -415,14 +422,170 @@
     </div>
   </section>
 
-  <!-- 08 FORMS & LINKS -->
+  <!-- 08 RELATIONSHIPS -->
+  <section class="cap-section" id="people">
+    <div class="cap-num">08 / relationships &amp; warm intros</div>
+    <h2 class="cap-h">Six degrees, <em>mapped for you.</em></h2>
+    <p class="cap-lede">Flitsy remembers who knows whom — colleagues, former employers, who introduced whom. Need to reach someone cold? Ask for the warm path and it walks the graph for you.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">How do I get a warm intro to the CFO at Globex?</span>
+      <span class="cap-prompt">Who introduced me to Sarah?</span>
+      <span class="cap-prompt">Note that David used to work with Mei.</span>
+      <span class="cap-prompt">Who do I know in common with Northwind?</span>
+    </div>
+
+    <div class="cap-demo">
+      <ol class="step-list">
+        <li><span class="n">1</span><div class="body"><b>You</b> already know <b>Sarah Lin</b> — Acme, spoke last week.</div></li>
+        <li><span class="n">2</span><div class="body">Sarah is a <b>former colleague</b> of <b>Mei Tan</b> at Globex.</div></li>
+        <li><span class="n">3</span><div class="body">Mei reports to the <b>CFO</b> you're trying to reach. → Ask Sarah for the intro.</div></li>
+      </ol>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>find_warm_intro</code>
+      <code>find_path_to</code>
+      <code>add_relationship</code>
+      <code>get_relationships</code>
+    </div>
+  </section>
+
+  <!-- 09 TAGS & FIELDS -->
+  <section class="cap-section" id="tags">
+    <div class="cap-num">09 / tags &amp; custom fields</div>
+    <h2 class="cap-h">Your own labels. <em>Your own fields.</em></h2>
+    <p class="cap-lede">Tag anything; invent any field. "Renewal month," "how we met," "T-shirt size" — Flitsy stores it as a custom attribute and recalls it on demand. No schema, no admin screen, no migration.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Tag Acme and Northwind as Q3-targets.</span>
+      <span class="cap-prompt">Set Acme's renewal month to August.</span>
+      <span class="cap-prompt">Who's tagged enterprise?</span>
+      <span class="cap-prompt">What's Sarah's preferred contact time?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-facts">
+        <div class="mfc-head">Acme Co. — tags &amp; fields</div>
+        <div class="mfc-list">
+          <div class="mfc-fact"><div class="mfc-key">tags</div><div class="mfc-val">enterprise · partner · q3-target</div></div>
+          <div class="mfc-fact"><div class="mfc-key">renewal_month</div><div class="mfc-val">August</div></div>
+          <div class="mfc-fact"><div class="mfc-key">how_we_met</div><div class="mfc-val">SaaStr 2025, booth chat</div></div>
+          <div class="mfc-fact"><div class="mfc-key">contract_value</div><div class="mfc-val">$48k / year</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>tag_entity</code>
+      <code>untag_entity</code>
+      <code>create_tag</code>
+      <code>list_tags</code>
+      <code>list_tagged</code>
+      <code>set_attribute</code>
+      <code>get_attribute</code>
+      <code>list_attributes</code>
+    </div>
+  </section>
+
+  <!-- 10 TIDY -->
+  <section class="cap-section" id="tidy">
+    <div class="cap-num">10 / keep it tidy</div>
+    <h2 class="cap-h">Two Acmes? <em>Flitsy spots it.</em></h2>
+    <p class="cap-lede">Imports and forwarded emails breed duplicates. Ask Flitsy to find them — it ranks likely matches, shows a side-by-side before anything changes, and merges on your say-so. One word undoes it.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Find duplicate organisations.</span>
+      <span class="cap-prompt">Are there two records for Sarah Lin?</span>
+      <span class="cap-prompt">Merge the two Acme entries.</span>
+      <span class="cap-prompt">Undo that.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="tool-call">
+        <div class="tool-head">
+          <span class="ic">⌁</span>
+          <span class="name">find_duplicate_organisations</span>
+          <span class="ms">211 ms</span>
+        </div>
+        <div class="mini-table">
+          <div class="row head"><div>Record</div><div>Matched on</div><div class="stage">Score</div><div></div></div>
+          <div class="row"><div class="name">Acme Co.</div><div>name + city</div><div class="stage">0.94</div><div><span class="pill-warn">dupe</span></div></div>
+          <div class="row"><div class="name">Acme Co</div><div>name</div><div class="stage">0.88</div><div><span class="pill-warn">dupe</span></div></div>
+          <div class="row"><div class="name">Acme Holdings</div><div>name</div><div class="stage">0.61</div><div>maybe</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>find_duplicate_organisations</code>
+      <code>find_duplicate_people</code>
+      <code>merge_organisations</code>
+      <code>merge_people</code>
+      <code>undo_last_action</code>
+    </div>
+  </section>
+
+  <!-- 11 EVENTS -->
+  <section class="cap-section" id="events">
+    <div class="cap-num">11 / events &amp; RSVPs <span class="cap-pro">Pro</span></div>
+    <h2 class="cap-h">Invite, track RSVPs, <em>count heads.</em></h2>
+    <p class="cap-lede">Run a customer dinner or a webinar without a spreadsheet. Add invitees, record who said yes, mark who actually turned up — all by talking to Flitsy. It rolls the numbers up for you.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Create a "Spring customer dinner" for 12 June.</span>
+      <span class="cap-prompt">Invite everyone tagged VIP.</span>
+      <span class="cap-prompt">Mark Sarah and her +1 as attended.</span>
+      <span class="cap-prompt">Who RSVP'd yes but didn't show?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-forms">
+        <div class="mf-head">Spring customer dinner · 12 Jun</div>
+        <div class="mf-stats">
+          <div class="mf-stat"><span class="mf-num">38</span> invited</div>
+          <div class="mf-stat"><span class="mf-num">22</span> RSVP'd yes</div>
+          <div class="mf-stat"><span class="mf-num">19</span> attended</div>
+        </div>
+        <div class="mf-section-h">Invitees</div>
+        <div class="mf-item">
+          <div class="mf-row"><b>Sarah Lin</b> <span class="mf-org">@ Acme Co.</span> <span class="mf-time">attended +1</span></div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-row"><b>David Chen</b> <span class="mf-org">@ Acme Co.</span> <span class="mf-time">yes · no-show</span></div>
+        </div>
+        <div class="mf-item">
+          <div class="mf-row"><b>Priya Kumar</b> <span class="mf-org">@ Anvil Co</span> <span class="mf-time">declined</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>upsert_event</code>
+      <code>list_events</code>
+      <code>get_event</code>
+      <code>add_event_invitees</code>
+      <code>record_invitations_sent</code>
+      <code>record_rsvp</code>
+      <code>record_attendance</code>
+      <code>list_event_invitees</code>
+      <code>list_event_attendees</code>
+    </div>
+  </section>
+
+  <!-- 12 FORMS & LINKS -->
   <section class="cap-section" id="forms">
-    <div class="cap-num">08 / forms &amp; tracked links</div>
+    <div class="cap-num">12 / forms &amp; tracked links <span class="cap-pro">Pro</span></div>
     <h2 class="cap-h">Public surfaces. <em>Private capture.</em></h2>
     <p class="cap-lede">Spin up a contact form or wrap a link with tracking. Submissions land back as new contacts; clicks and opens roll up under the contact they belong to. Ask for the rollup whenever.</p>
 
     <div class="cap-prompts">
       <span class="cap-prompt">Make a contact form for the new product page.</span>
+      <span class="cap-prompt">Send Jamie a personalised intake form.</span>
       <span class="cap-prompt">Who clicked the demo link this week?</span>
       <span class="cap-prompt">How many opens on Tuesday's newsletter?</span>
       <span class="cap-prompt">Did anyone submit overnight?</span>
@@ -457,16 +620,143 @@
     <div class="cap-tools">
       <span class="cap-tool-label">Tools</span>
       <code>upsert_form</code>
+      <code>list_forms</code>
+      <code>get_form</code>
       <code>list_form_submissions</code>
+      <code>get_form_submission</code>
+      <code>issue_form_invitation</code>
+      <code>list_form_invitations</code>
       <code>create_tracked_link</code>
+      <code>list_tracked_links</code>
       <code>get_link_clicks</code>
       <code>get_email_opens</code>
     </div>
   </section>
 
-  <!-- 09 VOICE -->
+  <!-- 13 FILES -->
+  <section class="cap-section" id="files">
+    <div class="cap-num">13 / files &amp; attachments</div>
+    <h2 class="cap-h">Drop in a contract. <em>It sticks to the record.</em></h2>
+    <p class="cap-lede">Drag a PDF, image, or deck into the chat and Flitsy files it against the right contact, org, or deal. Ask for it back later and it hands you a secure, time-limited download link.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Attach this signed contract to Acme.</span>
+      <span class="cap-prompt">What files do we have for Northwind?</span>
+      <span class="cap-prompt">Send me the latest deck for the Globex deal.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-org">
+        <div class="mo-section">
+          <div class="mo-section-h">Acme Co. — files (4)</div>
+          <div class="mo-item">
+            <div class="mo-item-meta">MSA-2026-signed.pdf · 1.2 MB · 3 days ago</div>
+            <div class="mo-item-body">Master agreement, countersigned. Linked to the Acme renewal deal.</div>
+          </div>
+          <div class="mo-item">
+            <div class="mo-item-meta">Q3-proposal-v2.pdf · 840 KB · 2 weeks ago</div>
+            <div class="mo-item-body">Pricing walkthrough sent to Sarah before the board check-in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>upload_attachment</code>
+      <code>list_attachments</code>
+      <code>get_attachment_url</code>
+    </div>
+  </section>
+
+  <!-- 14 AUTOMATIONS -->
+  <section class="cap-section" id="automations">
+    <div class="cap-num">14 / automations <span class="cap-pro">Pro</span></div>
+    <h2 class="cap-h">Set it once. <em>It runs without you.</em></h2>
+    <p class="cap-lede">Hand Flitsy a recurring job in plain English and a schedule — and it runs on its own, on a cron, as its own little agent. It works the dataset, drafts what's needed, and leaves the results for you to review.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Every Monday at 7am, list what's gone quiet and draft chases.</span>
+      <span class="cap-prompt">Run my weekly digest now.</span>
+      <span class="cap-prompt">Show me the last few automation runs.</span>
+      <span class="cap-prompt">Pause the Friday recap.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-actions">
+        <div class="ma-head">monday-recap · every Mon 7:00am</div>
+        <ol class="ma-list">
+          <li>
+            <div class="ma-num">1</div>
+            <div class="ma-body"><b>Scanned 142 accounts.</b> Six have gone quiet past your 14-day threshold. <span class="ma-tag">stalled</span></div>
+          </li>
+          <li>
+            <div class="ma-num">2</div>
+            <div class="ma-body"><b>Drafted 6 chase emails</b> in your voice, one per account.</div>
+          </li>
+          <li>
+            <div class="ma-num">3</div>
+            <div class="ma-body"><b>Left them in your review queue.</b> Nothing sent — you approve each one.
+              <div class="ma-hint">→ Last run 7:02am today · 18 tool calls · ran on its own.</div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>register_automation</code>
+      <code>list_automations</code>
+      <code>run_automation_now</code>
+      <code>list_automation_runs</code>
+      <code>delete_automation</code>
+    </div>
+  </section>
+
+  <!-- 15 TEAM -->
+  <section class="cap-section" id="team">
+    <div class="cap-num">15 / your team</div>
+    <h2 class="cap-h">Add the team. <em>Hand out the keys.</em></h2>
+    <p class="cap-lede">Invite colleagues, set who's an admin, revoke access when someone moves on — all in chat. Everyone shares one dataset, and the seat travels with the person, not the device.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Invite mei@acme.co as an admin.</span>
+      <span class="cap-prompt">Who's on the account?</span>
+      <span class="cap-prompt">Make Sarah an admin.</span>
+      <span class="cap-prompt">Remove the contractor's access.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="tool-call">
+        <div class="tool-head">
+          <span class="ic">⌁</span>
+          <span class="name">list_members</span>
+          <span class="ms">96 ms</span>
+        </div>
+        <div class="mini-table">
+          <div class="row head"><div>Name</div><div>Email</div><div class="stage">Role</div><div>Status</div></div>
+          <div class="row"><div class="name">Jay M.</div><div>jay@flitsy.app</div><div class="stage">owner</div><div>active</div></div>
+          <div class="row"><div class="name">Sarah Lin</div><div>sarah@acme.co</div><div class="stage">admin</div><div>active</div></div>
+          <div class="row"><div class="name">Mei Tan</div><div>mei@globex.io</div><div class="stage">user</div><div>active</div></div>
+          <div class="row"><div class="name">R. Okafor</div><div>contractor@…</div><div class="stage">user</div><div><span class="pill-warn">invited</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>list_members</code>
+      <code>invite_members</code>
+      <code>change_member_role</code>
+      <code>revoke_invite</code>
+      <code>remove_member</code>
+    </div>
+  </section>
+
+  <!-- 16 VOICE -->
   <section class="cap-section" id="voice">
-    <div class="cap-num">09 / teach flitsy your voice</div>
+    <div class="cap-num">16 / teach flitsy your voice</div>
     <h2 class="cap-h">It learns <em>once</em>. Then it sounds like you.</h2>
     <p class="cap-lede">Set facts — your signature, your tone, things to never discount before, default meeting length. Every draft and reply pulls from these. No prompt scaffolding required.</p>
 
@@ -503,11 +793,11 @@
 
     <div class="cap-tools">
       <span class="cap-tool-label">Tools</span>
-      <code>set_fact</code>
-      <code>get_fact</code>
-      <code>list_facts</code>
+      <code>set_dataset_fact</code>
+      <code>read_dataset_facts</code>
       <code>set_my_signature</code>
-      <code>set_attribute</code>
+      <code>customize_dataset_vocabulary</code>
+      <code>list_dataset_config</code>
     </div>
   </section>
 

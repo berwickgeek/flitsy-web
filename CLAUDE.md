@@ -32,6 +32,13 @@ that repo once `flitsy.app` is fully served from here.
 ## Structure
 
 ```
+brand/              Canonical brand kit — this project OWNS these
+  README.md         Brand guide notes
+  Brand Guide.html  Visual reference (open in browser)
+  colors.css        Drop-in CSS variables
+  logos/            Mark, wordmark, lockups (SVG, animated + static)
+  icons/            Favicon, apple-touch, app-icon (SVG)
+  exports/          Rasterized PNGs at common sizes
 content/
   _index.md         Front page (no body — design is in the template)
   privacy.md        Sourced from flitsy-crm/docs/privacy.md
@@ -42,10 +49,17 @@ layouts/
     single.html     Doc-page layout (renders Markdown into a paper card)
   index.html        Homepage — the hand-built "conversation" layout
 static/
+  brand/            Web-served subset (favicons, nav logo, OG image)
   css/style.css     Extracted from the original single-file design
   js/app.js         Sticky nav, smooth scroll, animated compose placeholder
 hugo.toml           Site config (baseURL, params, disableKinds)
 ```
+
+`/brand/` is the canonical home for all Flitsy logo and branding
+assets — they live here regardless of whether the marketing site uses
+them. When grabbing assets for any other Flitsy surface (app, social,
+press, decks), pull from `/brand/`. The Hugo-served subset in
+`/static/brand/` is a deliberate copy — keep it in sync.
 
 The homepage is hand-built in `layouts/index.html` rather than driven
 by content/markdown — the conversation IS the design, not copy. To
@@ -78,12 +92,19 @@ built yet).
 
 ## Brand notes
 
-- Paper palette, purple `--accent: #7c5cff`, warm orange for user
-  turns. Don't drift the palette without good reason — the system is
-  intentional and works.
+- Mark is `{f|}` — lowercase f framed by curly braces with a blinking
+  amber cursor. See `brand/README.md` and `brand/Brand Guide.html`
+  for the canonical spec. Animated SVGs blink at 1.1s / 50% duty —
+  don't change the period.
+- Palette: cream `#fdf8ee`, ink `#1a1714`, amber `#d09863` (cursor /
+  accent — low-saturation, NOT for primary text or large fills).
+  Warm orange `--warm` stays as the user-bubble color.
 - Tone is conversational and lightly self-aware ("five minutes", "we
   never see your data"), not corporate. Read the existing copy before
   writing new copy.
 - The hero animation is the staggered fade-in of conversation turns
   + the typing-placeholder rotation in the compose box. If you add
   sections, keep that feel.
+- **Don't use a standalone lowercase "f" in a rounded square** — it
+  reads as Facebook. Use the full mark (both braces + f + cursor) or
+  the wordmark.

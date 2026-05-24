@@ -44,15 +44,25 @@ you set up email forwarding into Flitsy, the messages you forward are
 stored as interactions.
 
 **Operational logs.** Standard server logs (request paths, status
-codes, timestamps, IP addresses) for security and debugging. We do
-not run analytics, session replay, or any third-party tracking on
-our pages.
+codes, timestamps, IP addresses) for security and debugging.
+
+**Website analytics.** Our marketing pages use a privacy-friendly,
+cookieless analytics tool (Umami) that records aggregate visits with
+no personal identifiers and no cross-site tracking.
+
+**Advertising pixel — only if you opt in.** If you accept the cookie
+banner on our marketing site, we load Reddit's advertising pixel to
+measure how our Reddit ad campaigns perform. It sets cookies and
+shares page-visit and conversion events with Reddit. It does not run
+unless you accept the banner, it only ever touches our public
+marketing pages — never your CRM data — and declining keeps it off.
 
 ## How we use it
 
-To run your CRM. That's the entire list. We don't sell your data,
-we don't share it with advertisers, and we don't use it to train
-anyone's AI models.
+To run your CRM. That's the entire list. We don't sell your CRM
+data, we don't hand it to advertisers, and we don't use it to train
+anyone's AI models. (The optional advertising pixel described above
+applies only to our public marketing pages, never to CRM data.)
 
 ## Google user data — Limited Use disclosure
 

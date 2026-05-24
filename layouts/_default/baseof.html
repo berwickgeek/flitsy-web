@@ -34,7 +34,28 @@
         if (window.umami) window.umami.track("webhook-notify-click");
       });
     });
+
+    // Reddit conversion: fire SignUp when someone clicks "Add Flitsy to Claude".
+    // Only fires if the Reddit pixel was loaded (i.e. the visitor accepted the cookie banner).
+    document.querySelectorAll('a[href*="claude.ai/customize/connectors"]').forEach(function (a) {
+      a.addEventListener("click", function () {
+        if (window.rdt) window.rdt("track", "SignUp");
+      });
+    });
   });
+</script>
+
+<!-- Reddit Pixel — loaded only after the visitor accepts the cookie banner (see consent banner). -->
+<script>
+  // The official Reddit Pixel snippet, unchanged, wrapped so it runs on consent rather than on load.
+  window.__loadRedditPixel = function () {
+    if (window.rdt) return; // already loaded
+    // === Reddit Pixel (DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER) ===
+    !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j2765jplijir",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_j2765jplijir');rdt('track', 'PageVisit');
+    // === End Reddit Pixel ===
+  };
+  // If the visitor already consented on a previous visit, load it straight away.
+  try { if (localStorage.getItem("flitsy-consent") === "granted") window.__loadRedditPixel(); } catch (e) {}
 </script>
 </head>
 <body{{ if not .IsHome }} class="doc"{{ end }}>
@@ -55,6 +76,40 @@
 </div>
 
 {{ block "main" . }}{{ end }}
+
+<!-- Cookie consent — gates the Reddit advertising pixel -->
+<div class="consent" id="consent" hidden>
+  <div class="consent-inner">
+    <p class="consent-text">
+      We use a Reddit advertising pixel to measure our ad campaigns — it sets cookies and
+      shares visit data with Reddit. Our core site analytics stay cookieless either way.
+      <a href="{{ "/privacy/" | relURL }}">Privacy policy</a>.
+    </p>
+    <div class="consent-actions">
+      <button type="button" class="btn btn-ghost btn-sm" id="consent-decline">Decline</button>
+      <button type="button" class="btn btn-railway btn-sm" id="consent-accept">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var KEY = "flitsy-consent";
+    var el = document.getElementById("consent");
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    if (stored === "granted" || stored === "denied") return; // decision already made
+    if (el) el.hidden = false;
+    function decide(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+      if (el) el.hidden = true;
+      if (value === "granted" && window.__loadRedditPixel) window.__loadRedditPixel();
+    }
+    var accept = document.getElementById("consent-accept");
+    var decline = document.getElementById("consent-decline");
+    if (accept) accept.addEventListener("click", function () { decide("granted"); });
+    if (decline) decline.addEventListener("click", function () { decide("denied"); });
+  })();
+</script>
 
 <footer>
   <div class="left">

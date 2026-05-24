@@ -1,0 +1,34 @@
+/* Flitsy — Brand color tokens
+ * ─────────────────────────────────────────────────────────────────────
+ * Drop into your stylesheet. Hex values are the safe fallback; oklch()
+ * is the design-system source of truth (modern browsers).
+ */
+
+:root {
+  /* Ground — the warm cream from flitsy.app */
+  --flitsy-cream:        #fdf8ee;
+  --flitsy-cream-2:      #f5eedf;  /* tonal step down — card / row hover */
+
+  /* Ink — primary text + brace strokes */
+  --flitsy-ink:          #1a1714;
+  --flitsy-ink-2:        #3a342d;  /* secondary text */
+  --flitsy-ink-3:        #8a8378;  /* muted, captions, mono labels */
+
+  /* Accent — the cursor amber */
+  --flitsy-amber:        oklch(0.72 0.14 65);  /* design-system source */
+  --flitsy-amber-hex:    #d09863;               /* fallback */
+
+  /* Type stack */
+  --flitsy-font-sans:    'Geist', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --flitsy-font-mono:    'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* Optional dark-mode tokens — same hues, inverted ground */
+:root[data-theme="dark"] {
+  --flitsy-bg:           var(--flitsy-ink);
+  --flitsy-fg:           var(--flitsy-cream);
+}
+:root[data-theme="light"] {
+  --flitsy-bg:           var(--flitsy-cream);
+  --flitsy-fg:           var(--flitsy-ink);
+}

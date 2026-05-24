@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" role="img" aria-label="Flitsy mark">
+  <title>Flitsy mark</title>
+  
+  <g transform="translate(0, 10) scale(1.125)">
+    <path d="M 42 8 C 32 8, 26 14, 26 30 L 26 64 C 26 75, 22 76, 6 80 C 22 84, 26 85, 26 96 L 26 130 C 26 146, 32 152, 42 152" fill="none" stroke="#1a1714" stroke-width="14" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="10"></path>
+  </g>
+  <g transform="translate(75, 25) scale(0.95)" fill="none" stroke="#1a1714" stroke-width="16" stroke-linecap="round" stroke-linejoin="miter">
+    <path d="M 78 8 C 62 8, 52 14, 52 30 L 52 150"></path>
+    <path d="M 14 58 L 70 58"></path>
+  </g>
+  <rect x="178" y="50" width="13" height="125" rx="2.5" fill="#1a1714"></rect>
+  <g transform="translate(260, 10) scale(-1.125, 1.125)">
+    <path d="M 42 8 C 32 8, 26 14, 26 30 L 26 64 C 26 75, 22 76, 6 80 C 22 84, 26 85, 26 96 L 26 130 C 26 146, 32 152, 42 152" fill="none" stroke="#1a1714" stroke-width="14" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="10"></path>
+  </g>
+</svg>
