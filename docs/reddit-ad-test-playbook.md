@@ -183,6 +183,14 @@ For a brand-new MCP-native CRM in May 2026, **$100 AUD spent on Reddit ads is be
 
 **Stage 2 — Launch (days 1–5):**
 5. Single ad group, single free-form creative, manual CPC bid US$0.85, daily budget US$8, targeting r/ClaudeAI + r/SideProject + r/LocalLLaMA + r/mcp + r/indiehackers + r/EntrepreneurRideAlong, Feed + Conversation placements, 28-day attribution.
+
+   **Create everything `PAUSED`, not `ACTIVE`.** On Reddit, *approval* (PENDING_REVIEW → APPROVED) is a separate dimension from *run state* (`configured_status`: ACTIVE / PAUSED) on the campaign, ad group, and ad. If you build a campaign with all three levels set to ACTIVE and a start time that's already passed, Reddit will **auto-launch it the instant the ad clears review** — which can happen overnight, unattended, while spending real money. To avoid that, set the **campaign** to `configured_status: PAUSED` at creation (a paused campaign gates every child regardless of approval), and flip it to ACTIVE only when you're deliberately ready to go live. One-flip control via the API client in `tools/reddit-ads/`:
+   ```bash
+   # gate (safe overnight) / launch
+   ./reddit-api.py PATCH /api/v3/campaigns/<CAMPAIGN_ID> '{"data": {"configured_status": "PAUSED"}}'
+   ./reddit-api.py PATCH /api/v3/campaigns/<CAMPAIGN_ID> '{"data": {"configured_status": "ACTIVE"}}'
+   ```
+   Note the single-resource path is non-nested (`/api/v3/campaigns/<id>`), not under `/ad_accounts/`. If the ad group's `start_time` is in the past when you unpause, delivery begins immediately — push `start_time` to a future value if you want a scheduled rather than instant launch.
 6. Same day: post the Angle B build-story to r/SideProject and the technical version to r/ClaudeAI.
 7. Reply to every comment on both the ad and the organic posts within 2 hours.
 
