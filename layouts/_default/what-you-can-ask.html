@@ -12,18 +12,22 @@
     <a href="#day">02 · Plan your day</a>
     <a href="#week">03 · Plan your week</a>
     <a href="#pipeline">04 · Pipeline</a>
-    <a href="#compose">05 · Draft &amp; send</a>
-    <a href="#log">06 · Log it</a>
-    <a href="#tasks">07 · Tasks</a>
-    <a href="#people">08 · Relationships</a>
-    <a href="#tags">09 · Tags &amp; fields</a>
-    <a href="#tidy">10 · Tidy up</a>
-    <a href="#events">11 · Events</a>
-    <a href="#forms">12 · Forms &amp; links</a>
-    <a href="#files">13 · Files</a>
-    <a href="#automations">14 · Automations</a>
-    <a href="#team">15 · Your team</a>
-    <a href="#voice">16 · Your voice</a>
+    <a href="#qualify">05 · Qualify &amp; forecast</a>
+    <a href="#compose">06 · Draft &amp; send</a>
+    <a href="#inbox">07 · Connect your inbox</a>
+    <a href="#log">08 · Log it</a>
+    <a href="#tasks">09 · Tasks</a>
+    <a href="#commitments">10 · Commitments</a>
+    <a href="#people">11 · Relationships</a>
+    <a href="#tags">12 · Tags &amp; fields</a>
+    <a href="#tidy">13 · Tidy up</a>
+    <a href="#events">14 · Events</a>
+    <a href="#forms">15 · Forms &amp; links</a>
+    <a href="#files">16 · Files</a>
+    <a href="#automations">17 · Automations</a>
+    <a href="#team">18 · Your team</a>
+    <a href="#reporting">19 · Teams &amp; reporting</a>
+    <a href="#voice">20 · Your voice</a>
   </nav>
 
   <!-- 01 BROWSE -->
@@ -36,7 +40,7 @@
       <span class="cap-prompt">Show me everything about Acme.</span>
       <span class="cap-prompt">Who do I know at Northwind?</span>
       <span class="cap-prompt">Find my notes about the aircon issue.</span>
-      <span class="cap-prompt">List the orgs I tagged as partners last quarter.</span>
+      <span class="cap-prompt">Walk me through Acme's whole history.</span>
     </div>
 
     <div class="cap-demo">
@@ -74,7 +78,11 @@
       <span class="cap-tool-label">Tools</span>
       <code>list_organisations</code>
       <code>get_organisation</code>
+      <code>list_people</code>
+      <code>get_person</code>
       <code>search_notes</code>
+      <code>get_org_timeline</code>
+      <code>get_interactions</code>
       <code>list_tagged</code>
       <code>get_relationships</code>
     </div>
@@ -266,13 +274,48 @@
       <code>upsert_deal</code>
       <code>move_deal_stage</code>
       <code>close_deal</code>
+      <code>bulk_update_status</code>
       <code>pipeline_summary</code>
     </div>
   </section>
 
-  <!-- 05 DRAFT & SEND -->
+  <!-- 05 QUALIFY & FORECAST -->
+  <section class="cap-section" id="qualify">
+    <div class="cap-num">05 / qualify &amp; forecast</div>
+    <h2 class="cap-h">Score the deal. <em>Know what's missing.</em></h2>
+    <p class="cap-lede">Flitsy scores each deal against your sales methodology — weighting the dimensions you care about, surfacing the single biggest gap to close next, and telling you whether it's forecast-ready yet. Ask "what should I move?" and it factors the gaps in.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">How well-qualified is the Acme deal?</span>
+      <span class="cap-prompt">What's the weakest part of Globex?</span>
+      <span class="cap-prompt">Which deals are forecast-ready?</span>
+      <span class="cap-prompt">Given I've got an hour, what should I move?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="mock-facts">
+        <div class="mfc-head">Acme renewal — qualification</div>
+        <div class="mfc-list">
+          <div class="mfc-fact"><div class="mfc-key">budget</div><div class="mfc-val">confirmed · strong</div></div>
+          <div class="mfc-fact"><div class="mfc-key">decision process</div><div class="mfc-val">mapped · solid</div></div>
+          <div class="mfc-fact"><div class="mfc-key">champion</div><div class="mfc-val">none named · weak ← biggest gap</div></div>
+          <div class="mfc-fact"><div class="mfc-key">forecast-ready</div><div class="mfc-val">not yet — close the champion gap first</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>get_deal_qualification</code>
+      <code>set_deal_qualification</code>
+      <code>get_methodology_config</code>
+      <code>guided_next_action</code>
+    </div>
+  </section>
+
+  <!-- 06 DRAFT & SEND -->
   <section class="cap-section" id="compose">
-    <div class="cap-num">05 / draft &amp; send</div>
+    <div class="cap-num">06 / draft &amp; send</div>
     <h2 class="cap-h">Draft <em>in your voice.</em> Send when you're ready.</h2>
     <p class="cap-lede">Flitsy reads the last thread, your saved tone facts, and the contact's history — then drafts something you can review, tweak, and send without leaving the chat. Tracks opens and clicks if you want.</p>
 
@@ -317,9 +360,49 @@
     </div>
   </section>
 
-  <!-- 06 LOG IT -->
+  <!-- 07 CONNECT YOUR INBOX -->
+  <section class="cap-section" id="inbox">
+    <div class="cap-num">07 / connect your inbox <span class="cap-pro">Pro</span></div>
+    <h2 class="cap-h">Plug in your mailbox. <em>Email flows both ways.</em></h2>
+    <p class="cap-lede">Connect Gmail or Microsoft 365 once. Outbound drafts send from your real address; inbound email finds its way in — forward anything to your private Flitsy address, or tag a message in Outlook and Flitsy reads it onto the right contact. (Inbox sync is Microsoft 365 today; Gmail is send-only.)</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Connect my Gmail.</span>
+      <span class="cap-prompt">What's my Flitsy forwarding address?</span>
+      <span class="cap-prompt">Sync my Outlook inbox now.</span>
+      <span class="cap-prompt">Which mailboxes are connected?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="tool-call">
+        <div class="tool-head">
+          <span class="ic">⌁</span>
+          <span class="name">list_send_authorities</span>
+          <span class="ms">88 ms</span>
+        </div>
+        <div class="mini-table">
+          <div class="row head"><div>Mailbox</div><div>Provider</div><div class="stage">Sends</div><div>Inbox sync</div></div>
+          <div class="row"><div class="name">jay@flitsy.app</div><div>Gmail</div><div class="stage">on</div><div>—</div></div>
+          <div class="row"><div class="name">sales@acme.co</div><div>Microsoft 365</div><div class="stage">on</div><div><span class="pill-warn">on</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>connect_email_send</code>
+      <code>get_email_send_status</code>
+      <code>list_send_authorities</code>
+      <code>get_inbound_email</code>
+      <code>enable_inbox_sync</code>
+      <code>sync_inbox_now</code>
+      <code>disconnect_email_send</code>
+    </div>
+  </section>
+
+  <!-- 08 LOG IT -->
   <section class="cap-section" id="log">
-    <div class="cap-num">06 / log what just happened</div>
+    <div class="cap-num">08 / log what just happened</div>
     <h2 class="cap-h">Tell Flitsy in <em>one sentence.</em> It does the filing.</h2>
     <p class="cap-lede">"Just got off a call with Sarah — budget approved, wants a v2 demo Tuesday." Flitsy parses who, what, when, then updates the deal stage, books the follow-up, and adds the new person — all from one line.</p>
 
@@ -355,13 +438,15 @@
       <code>log_interaction</code>
       <code>complete_meeting</code>
       <code>upsert_person</code>
+      <code>update_interaction</code>
+      <code>delete_interaction</code>
       <code>search_notes</code>
     </div>
   </section>
 
-  <!-- 07 TASKS -->
+  <!-- 09 TASKS -->
   <section class="cap-section" id="tasks">
-    <div class="cap-num">07 / tasks &amp; follow-ups</div>
+    <div class="cap-num">09 / tasks &amp; follow-ups</div>
     <h2 class="cap-h">A to-do list <em>that knows what you mean.</em></h2>
     <p class="cap-lede">"Remind me to chase Acme on Friday." That's enough — Flitsy parses the date, links the task to the right account, and surfaces it on Friday morning's three-thing list.</p>
 
@@ -422,9 +507,46 @@
     </div>
   </section>
 
-  <!-- 08 RELATIONSHIPS -->
+  <!-- 10 COMMITMENTS -->
+  <section class="cap-section" id="commitments">
+    <div class="cap-num">10 / promises &amp; commitments</div>
+    <h2 class="cap-h">Track who owes what. <em>Nothing slips.</em></h2>
+    <p class="cap-lede">Every "I'll send that Friday" and "they'll get back to me next week" is a commitment — yours or theirs. Flitsy tracks both directions, flags the ones that have blown their date, and pushes them up your next-actions list before they go cold.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Sarah owes me the signed MSA by Friday.</span>
+      <span class="cap-prompt">Remember I promised Globex a one-pager.</span>
+      <span class="cap-prompt">What's overdue on me?</span>
+      <span class="cap-prompt">What are people late getting back to me on?</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="tool-call">
+        <div class="tool-head">
+          <span class="ic">⌁</span>
+          <span class="name">list_commitments</span>
+          <span class="ms">134 ms</span>
+        </div>
+        <div class="mini-table">
+          <div class="row head"><div>What</div><div>Who</div><div class="stage">Due</div><div>Status</div></div>
+          <div class="row"><div class="name">Signed MSA</div><div>Sarah owes you</div><div class="stage">2 days ago</div><div><span class="pill-warn">overdue</span></div></div>
+          <div class="row"><div class="name">One-pager for the board</div><div>You owe Globex</div><div class="stage">Fri</div><div>open</div></div>
+          <div class="row"><div class="name">Intro to Mei</div><div>You owe David</div><div class="stage">last week</div><div>met</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>create_commitment</code>
+      <code>list_commitments</code>
+      <code>update_commitment</code>
+    </div>
+  </section>
+
+  <!-- 11 RELATIONSHIPS -->
   <section class="cap-section" id="people">
-    <div class="cap-num">08 / relationships &amp; warm intros</div>
+    <div class="cap-num">11 / relationships &amp; warm intros</div>
     <h2 class="cap-h">Six degrees, <em>mapped for you.</em></h2>
     <p class="cap-lede">Flitsy remembers who knows whom — colleagues, former employers, who introduced whom. Need to reach someone cold? Ask for the warm path and it walks the graph for you.</p>
 
@@ -445,16 +567,15 @@
 
     <div class="cap-tools">
       <span class="cap-tool-label">Tools</span>
-      <code>find_warm_intro</code>
       <code>find_path_to</code>
       <code>add_relationship</code>
       <code>get_relationships</code>
     </div>
   </section>
 
-  <!-- 09 TAGS & FIELDS -->
+  <!-- 12 TAGS & FIELDS -->
   <section class="cap-section" id="tags">
-    <div class="cap-num">09 / tags &amp; custom fields</div>
+    <div class="cap-num">12 / tags &amp; custom fields</div>
     <h2 class="cap-h">Your own labels. <em>Your own fields.</em></h2>
     <p class="cap-lede">Tag anything; invent any field. "Renewal month," "how we met," "T-shirt size" — Flitsy stores it as a custom attribute and recalls it on demand. No schema, no admin screen, no migration.</p>
 
@@ -490,9 +611,9 @@
     </div>
   </section>
 
-  <!-- 10 TIDY -->
+  <!-- 13 TIDY -->
   <section class="cap-section" id="tidy">
-    <div class="cap-num">10 / keep it tidy</div>
+    <div class="cap-num">13 / keep it tidy</div>
     <h2 class="cap-h">Two Acmes? <em>Flitsy spots it.</em></h2>
     <p class="cap-lede">Imports and forwarded emails breed duplicates. Ask Flitsy to find them — it ranks likely matches, shows a side-by-side before anything changes, and merges on your say-so. One word undoes it.</p>
 
@@ -529,9 +650,9 @@
     </div>
   </section>
 
-  <!-- 11 EVENTS -->
+  <!-- 14 EVENTS -->
   <section class="cap-section" id="events">
-    <div class="cap-num">11 / events &amp; RSVPs <span class="cap-pro">Pro</span></div>
+    <div class="cap-num">14 / events &amp; RSVPs <span class="cap-pro">Pro</span></div>
     <h2 class="cap-h">Invite, track RSVPs, <em>count heads.</em></h2>
     <p class="cap-lede">Run a customer dinner or a webinar without a spreadsheet. Add invitees, record who said yes, mark who actually turned up — all by talking to Flitsy. It rolls the numbers up for you.</p>
 
@@ -569,6 +690,7 @@
       <code>list_events</code>
       <code>get_event</code>
       <code>add_event_invitees</code>
+      <code>remove_event_invitee</code>
       <code>record_invitations_sent</code>
       <code>record_rsvp</code>
       <code>record_attendance</code>
@@ -577,9 +699,9 @@
     </div>
   </section>
 
-  <!-- 12 FORMS & LINKS -->
+  <!-- 15 FORMS & LINKS -->
   <section class="cap-section" id="forms">
-    <div class="cap-num">12 / forms &amp; tracked links <span class="cap-pro">Pro</span></div>
+    <div class="cap-num">15 / forms &amp; tracked links <span class="cap-pro">Pro</span></div>
     <h2 class="cap-h">Public surfaces. <em>Private capture.</em></h2>
     <p class="cap-lede">Spin up a contact form or wrap a link with tracking. Submissions land back as new contacts; clicks and opens roll up under the contact they belong to. Ask for the rollup whenever.</p>
 
@@ -633,9 +755,9 @@
     </div>
   </section>
 
-  <!-- 13 FILES -->
+  <!-- 16 FILES -->
   <section class="cap-section" id="files">
-    <div class="cap-num">13 / files &amp; attachments</div>
+    <div class="cap-num">16 / files &amp; attachments</div>
     <h2 class="cap-h">Drop in a contract. <em>It sticks to the record.</em></h2>
     <p class="cap-lede">Drag a PDF, image, or deck into the chat and Flitsy files it against the right contact, org, or deal. Ask for it back later and it hands you a secure, time-limited download link.</p>
 
@@ -669,9 +791,9 @@
     </div>
   </section>
 
-  <!-- 14 AUTOMATIONS -->
+  <!-- 17 AUTOMATIONS -->
   <section class="cap-section" id="automations">
-    <div class="cap-num">14 / automations <span class="cap-pro">Pro</span></div>
+    <div class="cap-num">17 / automations <span class="cap-pro">Pro</span></div>
     <h2 class="cap-h">Set it once. <em>It runs without you.</em></h2>
     <p class="cap-lede">Hand Flitsy a recurring job in plain English and a schedule — and it runs on its own, on a cron, as its own little agent. It works the dataset, drafts what's needed, and leaves the results for you to review.</p>
 
@@ -709,14 +831,16 @@
       <code>register_automation</code>
       <code>list_automations</code>
       <code>run_automation_now</code>
+      <code>run_playbook</code>
       <code>list_automation_runs</code>
+      <code>list_account_usage</code>
       <code>delete_automation</code>
     </div>
   </section>
 
-  <!-- 15 TEAM -->
+  <!-- 18 TEAM -->
   <section class="cap-section" id="team">
-    <div class="cap-num">15 / your team</div>
+    <div class="cap-num">18 / your team</div>
     <h2 class="cap-h">Add the team. <em>Hand out the keys.</em></h2>
     <p class="cap-lede">Invite colleagues, set who's an admin, revoke access when someone moves on — all in chat. Everyone shares one dataset, and the seat travels with the person, not the device.</p>
 
@@ -754,9 +878,54 @@
     </div>
   </section>
 
-  <!-- 16 VOICE -->
+  <!-- 19 TEAMS & REPORTING -->
+  <section class="cap-section" id="reporting">
+    <div class="cap-num">19 / teams &amp; reporting <span class="cap-pro">Pro</span></div>
+    <h2 class="cap-h">Group the team. <em>Roll the numbers up.</em></h2>
+    <p class="cap-lede">Build out the org chart — nest teams under teams — then ask for the figures scoped to any branch. Win rate, open pipeline, weighted value, the stage breakdown: for one rep, one team, or everyone beneath them. No report builder, just the question.</p>
+
+    <div class="cap-prompts">
+      <span class="cap-prompt">Create an "EMEA Sales" team under Sales.</span>
+      <span class="cap-prompt">Put Mei and David on EMEA Sales.</span>
+      <span class="cap-prompt">What's the win rate for the Sales team?</span>
+      <span class="cap-prompt">Show me weighted pipeline for EMEA and everyone under it.</span>
+    </div>
+
+    <div class="cap-demo">
+      <div class="tool-call">
+        <div class="tool-head">
+          <span class="ic">⌁</span>
+          <span class="name">deal_metrics</span>
+          <span class="args" style="color:var(--ink-3)">{ team: "sales" }</span>
+          <span class="ms">156 ms</span>
+        </div>
+        <div class="mini-table">
+          <div class="row head"><div>Stage</div><div>Deals</div><div class="stage">Value</div><div>Weighted</div></div>
+          <div class="row"><div class="name">Demo</div><div>5</div><div class="stage">$220k</div><div>$66k</div></div>
+          <div class="row"><div class="name">Proposal</div><div>3</div><div class="stage">$180k</div><div>$90k</div></div>
+          <div class="row"><div class="name">Negotiation</div><div>2</div><div class="stage">$140k</div><div>$98k</div></div>
+        </div>
+        <div class="deploy-meta" style="margin-top:12px">
+          <span class="chip acc">win rate 61%</span>
+          <span class="chip warm">rolled up · Sales + 2 nested teams</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-tools">
+      <span class="cap-tool-label">Tools</span>
+      <code>list_teams</code>
+      <code>create_team</code>
+      <code>update_team</code>
+      <code>get_team_roster</code>
+      <code>assign_to_team</code>
+      <code>deal_metrics</code>
+    </div>
+  </section>
+
+  <!-- 20 VOICE -->
   <section class="cap-section" id="voice">
-    <div class="cap-num">16 / teach flitsy your voice</div>
+    <div class="cap-num">20 / teach flitsy your voice</div>
     <h2 class="cap-h">It learns <em>once</em>. Then it sounds like you.</h2>
     <p class="cap-lede">Set facts — your signature, your tone, things to never discount before, default meeting length. Every draft and reply pulls from these. No prompt scaffolding required.</p>
 
@@ -795,7 +964,9 @@
       <span class="cap-tool-label">Tools</span>
       <code>set_dataset_fact</code>
       <code>read_dataset_facts</code>
+      <code>delete_dataset_fact</code>
       <code>set_my_signature</code>
+      <code>set_my_timezone</code>
       <code>customize_dataset_vocabulary</code>
       <code>list_dataset_config</code>
     </div>
