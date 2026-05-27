@@ -1,13 +1,13 @@
 ---
 title: "Terms of Service"
-subtitle: "Effective 16 May 2026"
-lastmod: 2026-05-16
+subtitle: "Effective 27 May 2026"
+lastmod: 2026-05-27
 description: "The terms that cover your use of Flitsy."
 ---
 
 These terms cover your use of Flitsy CRM ("Flitsy", "we", "us"). By
 signing in, you agree to them. We try to keep them short and in plain
-English. Questions? Email [j@jaym.cc](mailto:j@jaym.cc).
+English. Questions? Email [hello@flitsy.app](mailto:hello@flitsy.app).
 
 ## Who we are
 
@@ -42,9 +42,12 @@ exposes Flitsy to the public — sending email to contacts on your
 behalf, public web forms, trackable links, webhooks pointed
 outward — sits on a paid plan.
 
-When paid plans launch, payment is handled by **Stripe**. You agree
-to Stripe's terms in the course of paying us. We may change pricing
-with at least 30 days' notice by email to the address on your account.
+When paid plans launch, payment is handled by **Polar**
+([polar.sh](https://polar.sh)), our payment provider and Merchant of
+Record. Polar is the seller of record for paid plans and processes
+your payment; you agree to Polar's terms in the course of paying us.
+We may change pricing with at least 30 days' notice by email to the
+address on your account.
 
 Refunds: we offer a pro-rata refund for the unused portion of any
 prepaid plan if you cancel within 14 days of payment. After that,
@@ -177,4 +180,8 @@ protections still apply.
 
 ## Contact
 
-[j@jaym.cc](mailto:j@jaym.cc)
+General and account questions: [hello@flitsy.app](mailto:hello@flitsy.app).
+
+To report a security vulnerability, email
+[security@flitsy.app](mailto:security@flitsy.app) — we investigate
+reports promptly.

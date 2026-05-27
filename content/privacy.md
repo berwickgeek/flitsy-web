@@ -1,13 +1,13 @@
 ---
 title: "Privacy Policy"
-subtitle: "Effective 16 May 2026"
-lastmod: 2026-05-16
+subtitle: "Effective 27 May 2026"
+lastmod: 2026-05-27
 description: "How Flitsy collects, uses, and protects your data."
 ---
 
 This is the privacy policy for Flitsy CRM ("Flitsy", "we", "us").
 We try to keep it short and in plain English. If anything below is
-unclear, email us at [j@jaym.cc](mailto:j@jaym.cc) and we'll explain.
+unclear, email us at [hello@flitsy.app](mailto:hello@flitsy.app) and we'll explain.
 
 ## Who we are
 
@@ -85,6 +85,10 @@ sees what it needs to do its job:
 
 - **Railway** (Singapore) — hosts the Flitsy app and Postgres database.
 - **WorkOS** — handles sign-in.
+- **Polar** (US) — our payment provider and Merchant of Record for paid
+  plans. When you buy a plan it receives your name, email, and payment
+  details to process the transaction. We never see or store your card
+  number.
 - **Cohere** (US/Canada) — generates semantic-search embeddings of
   your notes and interaction content (including any email content
   saved as interactions). Cohere does not store or train on the
@@ -120,6 +124,10 @@ Backups are kept for up to 30 days.
 - All traffic to and from Flitsy uses TLS.
 - The app runs in a tenant-isolated environment on Railway.
 
+Found a security issue? Email
+[security@flitsy.app](mailto:security@flitsy.app) and we'll investigate
+promptly.
+
 We're a small operation. We follow sensible practices but we're not
 going to pretend we have a SOC 2 report. If you need one, we're not
 the right fit yet.
@@ -127,7 +135,7 @@ the right fit yet.
 ## Deleting your data
 
 You can delete your Flitsy account at any time by emailing
-[j@jaym.cc](mailto:j@jaym.cc). When you do:
+[hello@flitsy.app](mailto:hello@flitsy.app). When you do:
 
 - Your data is removed from the live database immediately.
 - It disappears from Railway backups within 30 days as old backups
@@ -147,7 +155,7 @@ You can ask us to:
 - Correct anything that's wrong
 - Delete it
 
-Email [j@jaym.cc](mailto:j@jaym.cc) and we'll respond within 30 days.
+Email [hello@flitsy.app](mailto:hello@flitsy.app) and we'll respond within 30 days.
 
 If you're in the EU/UK, GDPR gives you these rights formally. If
 you're in California, CCPA does. If you're in Australia, the
@@ -174,4 +182,4 @@ fixes get a quiet update with a new "Effective" date at the top.
 ## Contact
 
 Privacy questions, deletion requests, anything else:
-[j@jaym.cc](mailto:j@jaym.cc)
+[hello@flitsy.app](mailto:hello@flitsy.app)
