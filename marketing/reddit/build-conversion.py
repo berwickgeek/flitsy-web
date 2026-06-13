@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+"""Conversion-focused 1080x1080 Reddit creatives for Flitsy. Lower-funnel:
+offer + objection-removal + explicit CTA button. Renders via headless Chrome."""
+import subprocess, pathlib
+
+HERE = pathlib.Path(__file__).parent
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+MARK = '''<svg class="mark" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0,10) scale(1.125)"><path d="M 42 8 C 32 8, 26 14, 26 30 L 26 64 C 26 75, 22 76, 6 80 C 22 84, 26 85, 26 96 L 26 130 C 26 146, 32 152, 42 152" fill="none" stroke="#1a1714" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10"/></g>
+  <g transform="translate(75,25) scale(0.95)" fill="none" stroke="#1a1714" stroke-width="16" stroke-linecap="round"><path d="M 78 8 C 62 8, 52 14, 52 30 L 52 150"/><path d="M 14 58 L 70 58"/></g>
+  <rect x="178" y="50" width="13" height="125" rx="2.5" fill="#d09863"/>
+  <g transform="translate(260,10) scale(-1.125,1.125)"><path d="M 42 8 C 32 8, 26 14, 26 30 L 26 64 C 26 75, 22 76, 6 80 C 22 84, 26 85, 26 96 L 26 130 C 26 146, 32 152, 42 152" fill="none" stroke="#1a1714" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10"/></g>
+</svg>'''
+
+HEAD = '''<!doctype html><html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a1a;--ink-2:#3a3a3a;--ink-3:#5a5a5a;
+  --paper:#fdf8ee;--paper-2:#f5ecd9;--rule:#dccfb1;--rule-soft:#ece1c5;
+  --muted:#7a705a;--accent:#d09863;--accent-2:#8e6638;--accent-bg:#f7e9d4;
+  --warm:#e07a3a;--warm-bg:#fde7d4;--leaf:#3a8a4f;
+  --display:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1080px;overflow:hidden}
+.card{
+  width:1080px;height:1080px;position:relative;
+  font-family:var(--sans);color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 8% -8%, #fff7e8 0, transparent 60%),
+    radial-gradient(900px 520px at 112% 24%, #f1e3c5 0, transparent 60%),
+    var(--paper);
+  padding:84px;display:flex;flex-direction:column;
+}
+.mark{height:60px;width:auto;display:block}
+.brandrow{display:flex;align-items:center;gap:18px}
+.wordmark{font-family:var(--display);font-weight:600;font-size:44px;letter-spacing:-0.01em}
+.eyebrow{font-family:var(--mono);font-size:21px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-2)}
+h1{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;line-height:1.04;color:var(--ink)}
+em{font-style:italic;color:var(--accent-2)}
+.lede{color:var(--ink-3);line-height:1.42}
+/* check list */
+.ticks{display:flex;flex-direction:column;gap:22px;margin-top:8px}
+.tick{display:flex;align-items:center;gap:20px;font-size:34px;font-weight:500}
+.tick .ck{width:46px;height:46px;border-radius:50%;background:var(--leaf);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
+.tick s{color:var(--ink-3);text-decoration:none}
+/* CTA */
+.cta{margin-top:auto;display:flex;align-items:center;gap:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:16px;
+  font-family:var(--sans);font-size:34px;font-weight:700;letter-spacing:-0.01em;
+  padding:26px 44px;border-radius:18px;color:#fff;
+  background:linear-gradient(180deg,#1d1d23 0%,#0a0a0e 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.08) inset, 0 8px 24px rgba(26,26,26,.16);
+}
+.btn .arw{color:var(--accent);font-size:36px}
+.cta .note{font-family:var(--mono);font-size:21px;color:var(--muted);line-height:1.35}
+.urlbox{display:inline-flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--ink);border-radius:14px;padding:20px 26px;font-family:var(--mono);font-size:32px;font-weight:500}
+.urlbox .copy{background:var(--ink);color:var(--paper);border-radius:9px;padding:9px 18px;font-size:20px;font-family:var(--sans);font-weight:600}
+.price{font-family:var(--display);font-weight:600;font-size:230px;line-height:0.82;letter-spacing:-0.04em}
+.cursor{display:inline-block;width:16px;height:0.8em;background:var(--accent);border-radius:3px;vertical-align:-2px;margin-left:8px}
+</style></head><body>'''
+TAIL = "</body></html>"
+
+CTA = '''<div class="cta"><a class="btn">Start free <span class="arw">&rarr;</span> flitsy.app</a><span class="note">No card.<br>5-minute setup.</span></div>'''
+
+CARDS = {}
+
+# 1 — Offer hero (the workhorse)
+CARDS["c1-offer"] = f'''<div class="card">
+  <div class="brandrow">{MARK}<span class="wordmark">flitsy</span></div>
+  <h1 style="font-size:92px;margin-top:64px">Your CRM, inside<br>Claude. <em>Free.</em></h1>
+  <div class="ticks" style="margin-top:48px">
+    <div class="tick"><span class="ck">&#10003;</span>2 users &amp; 6,000 records — no card</div>
+    <div class="tick"><span class="ck">&#10003;</span>One URL, about five minutes</div>
+    <div class="tick"><span class="ck">&#10003;</span>No trial clock, ever</div>
+  </div>
+  {CTA}
+</div>'''
+
+# 2 — Friction killer: the literal action
+CARDS["c2-paste"] = f'''<div class="card">
+  <div class="eyebrow">Two steps. That's the whole setup.</div>
+  <h1 style="font-size:80px;margin-top:30px">Paste one URL.<br>Your CRM's <em>in the chat.</em></h1>
+  <div style="margin-top:46px"><div class="urlbox">https://my.flitsy.app/mcp<span class="copy">Copy</span></div></div>
+  <p class="lede" style="font-size:30px;margin-top:26px;max-width:840px">Drop it into Claude, Cursor, Zed — anything that speaks MCP. Your account is created the moment you connect.</p>
+  {CTA}
+</div>'''
+
+# 3 — Risk reversal
+CARDS["c3-zero"] = f'''<div class="card">
+  <div class="brandrow">{MARK}<span class="wordmark">flitsy</span></div>
+  <div style="margin-top:54px"><span class="price">$0</span></div>
+  <h1 style="font-size:58px;margin-top:28px">No card. No trial clock. <em>No catch.</em></h1>
+  <p class="lede" style="font-size:32px;margin-top:24px;max-width:860px">Free forever for 2 users and 6,000 records. Pro is just <b style="color:var(--ink);font-weight:700">$19/mo</b> if you ever outgrow it — unlimited records, every integration, Flitsy email sending.</p>
+  {CTA}
+</div>'''
+
+# 4 — Privacy / control objection killer
+CARDS["c4-data"] = f'''<div class="card">
+  <div class="eyebrow">Your data stays yours</div>
+  <h1 style="font-size:74px;margin-top:30px">We never see<br>your data.</h1>
+  <div class="ticks" style="margin-top:46px">
+    <div class="tick"><span class="ck">&#10003;</span>Tenant-isolated &amp; encrypted at rest</div>
+    <div class="tick"><span class="ck">&#10003;</span>Exportable any time</div>
+    <div class="tick"><span class="ck">&#10003;</span>Nothing sends until <em>you</em> hit Send</div>
+  </div>
+  {CTA}
+</div>'''
+
+# 5 — Value / switch
+CARDS["c5-switch"] = f'''<div class="card">
+  <div class="brandrow">{MARK}<span class="wordmark">flitsy</span></div>
+  <h1 style="font-size:78px;margin-top:60px">A real CRM.<br>Without the <em>dashboard tax.</em></h1>
+  <p class="lede" style="font-size:34px;margin-top:36px;max-width:880px">Same records, relationships, and reports — the interface is just a conversation. Less clicking, less context-switching, more done. <b style="color:var(--ink);font-weight:600">$19/mo for 2 seats, unlimited records.</b></p>
+  {CTA}
+</div>'''
+
+# 6 — Switch from existing CRM, direct
+CARDS["c6-today"] = f'''<div class="card">
+  <div class="eyebrow">Works with the AI you already use</div>
+  <h1 style="font-size:84px;margin-top:30px">Stop paying<br>for tabs you<br><em>never open.</em></h1>
+  <p class="lede" style="font-size:32px;margin-top:34px;max-width:840px">Flitsy lives inside Claude, Cursor, or ChatGPT. Ask "what's stalled?" — it reads, drafts the follow-up, and chases it. Free for 2 users to start.</p>
+  {CTA}
+</div>'''
+
+for name, body in CARDS.items():
+    hp = HERE / f"{name}.html"
+    hp.write_text(HEAD + body + TAIL)
+    out = HERE / f"{name}.png"
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
+                    f"--screenshot={out}", "--window-size=1080,1080",
+                    "--force-device-scale-factor=1", "--virtual-time-budget=4000",
+                    f"file://{hp}"], check=True,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    print(f"rendered {out.name}")
+print("done")
